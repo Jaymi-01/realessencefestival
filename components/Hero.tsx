@@ -56,9 +56,8 @@ export default function Hero({ marginClassName }: HeroProps) {
             </p>
           </div>
 
-          {/* Form Container */}
           <div className="flex justify-end mt-[-95px]">
-            <Card className="bg-white border-none rounded-[3rem] w-[380px] overflow-hidden shadow-[0_0_80px_rgba(255,255,255,0.3)]">
+            <Card className="bg-white border-none rounded-[3rem] w-[380px] overflow-hidden shadow-[0_0_80px_#FFF113]/50">
               <div className="bg-[#004A1F] py-8 text-center px-6">
                 <h2 className="text-2xl text-white uppercase leading-tight font-lilita">
                   REGISTER FOR THE BEST<br />DAY OF YOUR LIFE
