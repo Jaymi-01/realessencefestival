@@ -55,7 +55,7 @@ export default function Details() {
       <div className="relative z-20 w-full px-6 flex flex-col items-center">
 
         {/* Vector Date */}
-        <div className="relative w-full max-w-[320px] md:max-w-[550px] -mt-[280px] md:-mt-[420px] mb-6">
+        <div className="relative w-full max-w-[320px] md:max-w-[550px] -mt-[520px] md:-mt-[350px] mb-6">
           <div className="relative w-full aspect-[1046/484]">
             <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" sizes="(max-width: 768px) 320px, 550px" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 pb-2">
@@ -69,7 +69,7 @@ export default function Details() {
         </div>
 
         {/* Vector Venue */}
-        <div className="relative w-full max-w-[280px] md:max-w-[450px] -mt-[40px] md:-mt-[100px] mb-12">
+        <div className="relative w-full max-w-[280px] md:max-w-[450px] -mt-[70px] md:-mt-[100px] mb-12 z-20">
           <div className="relative w-full aspect-[800/450]">
             <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" sizes="(max-width: 768px) 280px, 450px" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 pt-2 md:pt-6">
