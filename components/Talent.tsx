@@ -10,7 +10,7 @@ export default function Talent() {
       image: "/assets/Rybeena 1.png", 
       bg: "/assets/Rybeena-background.png",
       color: "#004700",
-      desc: "Rybeena is a rising Nigerian artist known for his energetic Afropop and street-hop sound, with relatable, street-inspired lyrics."
+      desc: "Rising Nigerian artist known for his energetic Afropop and street-hop vibes."
     },
     { 
       name: "omoye cooks", 
@@ -65,22 +65,22 @@ export default function Talent() {
       }}
     >
       {/* Intersect Borders */}
-      <div className="absolute top-0 -left-[49px] md:-left-8 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+      <div className="absolute top-0 bottom-0 -left-[49px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
         <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
       </div>
-      <div className="absolute top-0 -right-[49px] md:-right-8 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+      <div className="absolute top-0 bottom-0 -right-[49px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
         <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
       </div>
 
       {/* Main Container */}
-      <div className="w-full px-16 md:px-[69px] relative z-20 flex flex-col">
+      <div className="w-full px-6 md:px-20 relative z-20 flex flex-col">
 
         {/* Mobile: header + celebrities + mascot stacked */}
         {/* Desktop: mascot left | (header + celebrities) right */}
         <div className="flex flex-col md:flex-row md:items-stretch w-full gap-8">
 
           {/* Mascot — bottom on mobile, aligns to grid top/bottom on desktop */}
-          <div className="shrink-0 order-3 md:order-1 relative w-full md:w-[450px] min-h-[400px] md:min-h-0 md:mt-25">
+          <div className="shrink-0 order-3 md:order-1 relative w-full md:w-[450px] min-h-[400px] md:min-h-0 md:mt-24">
             <Image 
               src="/assets/MASCOT 1.png" 
               alt="Mascot" 
@@ -99,21 +99,23 @@ export default function Talent() {
             </div>
 
             {/* Celebrities Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-15">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 md:gap-x-4 gap-y-8 md:gap-y-12">
               {celebrities.map((celeb, i) => (
                 <div key={i} className="flex flex-col items-center group">
                   <div className="relative w-full pb-[110%] flex items-end justify-center mb-4">
                     {/* Celebrity Background */}
-                    <div className="absolute inset-0 opacity-70 group-hover:opacity-100 transition-opacity">
-                      <Image src={celeb.bg} alt="" fill className="object-contain" />
+                    <div className="absolute inset-0 opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="relative w-[85%] md:w-full h-[85%] md:h-full">
+                        <Image src={celeb.bg} alt="" fill className="object-contain" />
+                      </div>
                     </div>
                     {/* Portrait */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] md:w-[80%] h-[90%] md:h-[95%] rounded-[2rem] overflow-hidden z-10 shadow-2xl transition-transform group-hover:-translate-y-2">
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[65%] md:w-[80%] h-[80%] md:h-[95%] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden z-10 shadow-2xl transition-transform group-hover:-translate-y-2">
                       <Image src={celeb.image} alt={celeb.name} fill className="object-contain md:object-cover object-top" />
                     </div>
 
                     {/* Name Blob - positioned relative to the container bottom */}
-                    <div className="absolute bottom-[-25%] md:bottom-[-45%] left-1/2 -translate-x-1/2 w-[85%] md:w-[98%] h-24 md:h-44 flex flex-col items-center justify-center z-20">
+                    <div className="absolute -bottom-[20%] md:-bottom-[45%] left-1/2 -translate-x-1/2 w-[75%] md:w-[98%] h-20 md:h-44 flex flex-col items-center justify-center z-20">
                       <div className="absolute inset-0 z-0">
                         <Image src="/assets/Mask group.png" alt="" fill className="object-stretch" />
                       </div>
