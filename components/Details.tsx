@@ -21,7 +21,6 @@ export default function Details() {
     { title: "GAMES", desc: "Games and fun activities to keep the energy going all day.", bg: "bg-[#C06014]" },
   ];
 
-  // Animation variants
   const mainVariants = {
     initial: { opacity: 1, y: 0 },
     hover: { opacity: 0, y: -20 },
@@ -33,8 +32,8 @@ export default function Details() {
   };
 
   return (
-    <section className="relative min-h-[1000px] flex flex-col items-center justify-center overflow-visible py-12 md:py-24 font-lilita text-white">
-      {/* ... Background and Plates ... */}
+    <section className="relative md:min-h-[1000px] flex flex-col items-center justify-center overflow-visible py-12 md:py-24 font-lilita text-white">
+      {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
           src="/assets/BG PATTERN 2.svg" 
@@ -55,7 +54,7 @@ export default function Details() {
       <div className="relative z-20 w-full px-6 flex flex-col items-center">
 
         {/* Vector Date */}
-        <div className="relative w-full max-w-[320px] md:max-w-[550px] -mt-[520px] md:-mt-[350px] mb-6">
+        <div className="relative w-full max-w-[320px] md:max-w-[550px] mt-0 md:-mt-[350px] mb-6">
           <div className="relative w-full aspect-[1046/484]">
             <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" sizes="(max-width: 768px) 320px, 550px" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 pb-2">
@@ -83,7 +82,7 @@ export default function Details() {
           </div>
         </div>
 
-        <div className="w-full max-w-[280px] md:max-w-[550px] space-y-3 md:space-y-4">
+        <div className="w-full max-w-[280px] md:max-w-[550px] space-y-3 md:space-y-4 pb-0">
           {/* Music Performance Pill */}
           <motion.div 
             initial={isMobile ? "hover" : "initial"}
