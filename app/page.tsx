@@ -2,6 +2,7 @@
 
 import Hero from "@/components/Hero";
 import Details from "@/components/Details";
+import Talent from "@/components/Talent";
 
 export default function Home() {
   const SECTION_MARGIN = "px-32";
@@ -11,10 +12,13 @@ export default function Home() {
       {/* SECTION 1: HERO */}
       <Hero marginClassName={SECTION_MARGIN} />
 
-      {/* SECTION 2: DETAILS - Removed custom margin prop as requested */}
+      {/* SECTION 2: DETAILS */}
       <Details />
 
-      {/* Awaiting your instructions for Section 3... */}
+      {/* SECTION 3: TALENTS */}
+      <Talent />
+
+      {/* Awaiting your instructions for Section 4... */}
     </main>
   );
 }
