@@ -1,8 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function Talent() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const celebrities = [
     { 
       name: "rybeena", 
@@ -80,28 +91,47 @@ export default function Talent() {
         <div className="flex flex-col md:flex-row md:items-stretch w-full gap-8">
 
           {/* Mascot — bottom on mobile, aligns to grid top/bottom on desktop */}
-          <div className="shrink-0 order-3 md:order-1 relative w-full md:w-[450px] min-h-[400px] md:min-h-0 md:mt-24">
+          <motion.div 
+            initial={{ x: isMobile ? 0 : -100, y: isMobile ? 50 : 0, opacity: 0 }}
+            whileInView={{ x: 0, y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="shrink-0 order-3 md:order-1 relative w-full md:w-[450px] min-h-[400px] md:min-h-0 md:mt-24"
+          >
             <Image 
               src="/assets/MASCOT 1.png" 
               alt="Mascot" 
               fill
               className="object-contain object-bottom drop-shadow-2xl" 
             />
-          </div>
+          </motion.div>
 
           {/* Right side: header + grid */}
           <div className="flex-1 min-w-0 flex flex-col order-1 md:order-2">
             {/* Header Text */}
-            <div className="w-full mb-8">
+            <motion.div 
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="w-full mb-8"
+            >
               <h2 className="text-[#FFF113] text-xl md:text-4xl leading-[0.9] text-center drop-shadow-lg lowercase">
                 big names. bold talent.<br />non-stop vibes.
               </h2>
-            </div>
+            </motion.div>
 
             {/* Celebrities Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 md:gap-x-4 gap-y-12 md:gap-y-24">
               {celebrities.map((celeb, i) => (
-                <div key={i} className="flex flex-col items-center group">
+                <motion.div 
+                  key={i} 
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 * i }}
+                  className="flex flex-col items-center group"
+                >
                   <div className="relative w-full pb-[110%] flex items-end justify-center mb-4">
                     {/* Celebrity Background */}
                     <div className="absolute inset-0 opacity-70 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -135,7 +165,7 @@ export default function Talent() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
