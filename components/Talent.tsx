@@ -4,12 +4,54 @@ import Image from "next/image";
 
 export default function Talent() {
   const celebrities = [
-    { name: "rybeena", role: "Guest Performing Artist", image: "/assets/Rybeena 1.png", bg: "/assets/Rybeena-background.png" },
-    { name: "omoye cooks", role: "Judge", image: "/assets/Omoye Cooks.png", bg: "/assets/Omoye-background.png" },
-    { name: "ifyskitchen", role: "Judge", image: "/assets/ify 1.png", bg: "/assets/ify-background.png" },
-    { name: "simi od", role: "Appearance", image: "/assets/Simi 1.png", bg: "/assets/simi-background.png" },
-    { name: "chef pobs", role: "Judge", image: "/assets/Chef Pobs.png", bg: "/assets/Chef Pobs-background.png" },
-    { name: "chike the creator", role: "Appearance", image: "/assets/Chike 1.png", bg: "/assets/chike-background.png" },
+    { 
+      name: "rybeena", 
+      role: "Guest Performing Artist", 
+      image: "/assets/Rybeena 1.png", 
+      bg: "/assets/Rybeena-background.png",
+      color: "#004700",
+      desc: "Rybeena is a rising Nigerian artist known for his energetic Afropop and street-hop sound, with relatable, street-inspired lyrics."
+    },
+    { 
+      name: "omoye cooks", 
+      role: "Judge", 
+      image: "/assets/Omoye Cooks.png", 
+      bg: "/assets/Omoye-background.png",
+      color: "#C10706",
+      desc: "Bringing expert taste and sharp culinary judgment to the competition."
+    },
+    { 
+      name: "ifyskitchen", 
+      role: "Judge", 
+      image: "/assets/ify 1.png", 
+      bg: "/assets/ify-background.png",
+      color: "#0906C1",
+      desc: "Master of flavors, here to find the next supreme cooking champion."
+    },
+    { 
+      name: "simi od", 
+      role: "Appearance", 
+      image: "/assets/Simi 1.png", 
+      bg: "/assets/simi-background.png",
+      color: "#004700",
+      desc: "Special appearance to light up the festival with pure energy."
+    },
+    { 
+      name: "chef pobs", 
+      role: "Judge", 
+      image: "/assets/Chef Pobs.png", 
+      bg: "/assets/Chef Pobs-background.png",
+      color: "#C10706",
+      desc: "A culinary visionary ready to crown the most talented chef."
+    },
+    { 
+      name: "chike the creator", 
+      role: "Appearance", 
+      image: "/assets/Chike 1.png", 
+      bg: "/assets/chike-background.png",
+      color: "#0906C1",
+      desc: "Bringing the vibes and creativity to the first-ever Essence Festival."
+    },
   ];
 
   return (
@@ -23,10 +65,10 @@ export default function Talent() {
       }}
     >
       {/* Intersect Borders */}
-      <div className="absolute top-0 -left-[49px] md:left-0 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+      <div className="absolute top-0 -left-[49px] md:-left-8 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
         <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
       </div>
-      <div className="absolute top-0 -right-[49px] md:right-0 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+      <div className="absolute top-0 -right-[49px] md:-right-8 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
         <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
       </div>
 
@@ -38,12 +80,11 @@ export default function Talent() {
         <div className="flex flex-col md:flex-row md:items-stretch w-full gap-8">
 
           {/* Mascot — bottom on mobile, aligns to grid top/bottom on desktop */}
-          <div className="shrink-0 order-3 md:order-1 md:flex md:items-stretch">
+          <div className="shrink-0 order-3 md:order-1 relative w-full md:w-[450px] min-h-[400px] md:min-h-0 md:mt-25">
             <Image 
               src="/assets/MASCOT 1.png" 
               alt="Mascot" 
-              width={380} 
-              height={520} 
+              fill
               className="object-contain object-bottom drop-shadow-2xl" 
             />
           </div>
@@ -52,13 +93,13 @@ export default function Talent() {
           <div className="flex-1 min-w-0 flex flex-col order-1 md:order-2">
             {/* Header Text */}
             <div className="w-full mb-8">
-              <h2 className="text-[#FFF113] text-xl md:text-7xl leading-[0.9] text-center drop-shadow-lg lowercase">
+              <h2 className="text-[#FFF113] text-xl md:text-4xl leading-[0.9] text-center drop-shadow-lg lowercase">
                 big names. bold talent.<br />non-stop vibes.
               </h2>
             </div>
 
             {/* Celebrities Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-15">
               {celebrities.map((celeb, i) => (
                 <div key={i} className="flex flex-col items-center group">
                   <div className="relative w-full pb-[110%] flex items-end justify-center mb-4">
@@ -70,8 +111,28 @@ export default function Talent() {
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] md:w-[80%] h-[90%] md:h-[95%] rounded-[2rem] overflow-hidden z-10 shadow-2xl transition-transform group-hover:-translate-y-2">
                       <Image src={celeb.image} alt={celeb.name} fill className="object-contain md:object-cover object-top" />
                     </div>
+
+                    {/* Name Blob - positioned relative to the container bottom */}
+                    <div className="absolute bottom-[-25%] md:bottom-[-45%] left-1/2 -translate-x-1/2 w-[85%] md:w-[98%] h-24 md:h-44 flex flex-col items-center justify-center z-20">
+                      <div className="absolute inset-0 z-0">
+                        <Image src="/assets/Mask group.png" alt="" fill className="object-stretch" />
+                      </div>
+                      <div className="relative z-10 flex flex-col items-center justify-center text-center w-full px-2 md:px-6">
+                        <h3 
+                          className="text-[7px] md:text-[18px] uppercase leading-none mb-0.5 md:mb-1 font-lilita"
+                          style={{ color: celeb.color }}
+                        >
+                          {celeb.name}
+                        </h3>
+                        <p className="text-[5.5px] md:text-[10px] text-black uppercase font-bold leading-none mb-0.5 md:mb-1">
+                          {celeb.role}
+                        </p>
+                        <p className="text-[8px] md:text-[12px] text-black/70 leading-tight line-clamp-none font-sans lowercase max-w-[95%] mx-auto">
+                          {celeb.desc}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-base md:text-xl text-[#FFF113] uppercase leading-none text-center">{celeb.name}</h3>
                 </div>
               ))}
             </div>
