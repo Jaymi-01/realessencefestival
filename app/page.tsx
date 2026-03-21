@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Details from "@/components/Details";
 import Talent from "@/components/Talent";
 import ChickenEssence from "@/components/ChickenEssence";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const SECTION_MARGIN = "px-32";
@@ -22,7 +23,8 @@ export default function Home() {
       {/* SECTION 4: CHICKEN ESSENCE */}
       <ChickenEssence />
 
-      {/* Awaiting your instructions for Section 5... */}
+      {/* FOOTER */}
+      <Footer />
     </main>
   );
 }
