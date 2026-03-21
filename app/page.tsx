@@ -1,30 +1,45 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Hero from "@/components/Hero";
 import Details from "@/components/Details";
 import Talent from "@/components/Talent";
 import ChickenEssence from "@/components/ChickenEssence";
 import Footer from "@/components/Footer";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const SECTION_MARGIN = "px-32";
 
+  useEffect(() => {
+    // Artificial delay to show the loading animation
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <main className="min-h-screen bg-white overflow-x-hidden">
-      {/* SECTION 1: HERO */}
-      <Hero marginClassName={SECTION_MARGIN} />
+    <>
+      <LoadingScreen isVisible={isLoading} />
+      <main className="min-h-screen bg-white overflow-x-hidden">
+        {/* SECTION 1: HERO */}
+        <Hero marginClassName={SECTION_MARGIN} />
 
-      {/* SECTION 2: DETAILS */}
-      <Details />
+        {/* SECTION 2: DETAILS */}
+        <Details />
 
-      {/* SECTION 3: TALENTS */}
-      <Talent />
+        {/* SECTION 3: TALENTS */}
+        <Talent />
 
-      {/* SECTION 4: CHICKEN ESSENCE */}
-      <ChickenEssence />
+        {/* SECTION 4: CHICKEN ESSENCE */}
+        <ChickenEssence />
 
-      {/* FOOTER */}
-      <Footer />
-    </main>
+        {/* FOOTER */}
+        <Footer />
+      </main>
+    </>
   );
 }
