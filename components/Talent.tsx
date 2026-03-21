@@ -23,15 +23,15 @@ export default function Talent() {
       }}
     >
       {/* Intersect Borders */}
-      <div className="absolute top-0 left-0 h-full w-[69px] z-30 pointer-events-none">
-        <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover" />
+      <div className="absolute top-0 -left-[49px] md:left-0 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+        <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
       </div>
-      <div className="absolute top-0 right-0 h-full w-[69px] z-30 pointer-events-none">
-        <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover" />
+      <div className="absolute top-0 -right-[49px] md:right-0 h-full w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+        <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
       </div>
 
       {/* Main Container */}
-      <div className="w-full px-[69px] relative z-20 flex flex-col">
+      <div className="w-full px-16 md:px-[69px] relative z-20 flex flex-col">
 
         {/* Mobile: header + celebrities + mascot stacked */}
         {/* Desktop: mascot left | (header + celebrities) right */}
@@ -52,23 +52,23 @@ export default function Talent() {
           <div className="flex-1 min-w-0 flex flex-col order-1 md:order-2">
             {/* Header Text */}
             <div className="w-full mb-8">
-              <h2 className="text-[#FFF113] text-3xl md:text-5xl leading-[0.9] text-center drop-shadow-lg lowercase">
+              <h2 className="text-[#FFF113] text-xl md:text-7xl leading-[0.9] text-center drop-shadow-lg lowercase">
                 big names. bold talent.<br />non-stop vibes.
               </h2>
             </div>
 
             {/* Celebrities Grid */}
-            <div className="grid grid-cols-3 gap-x-6 gap-y-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8">
               {celebrities.map((celeb, i) => (
                 <div key={i} className="flex flex-col items-center group">
-                  <div className="relative w-full aspect-square flex items-end justify-center mb-4">
+                  <div className="relative w-full pb-[110%] flex items-end justify-center mb-4">
                     {/* Celebrity Background */}
-                    <div className="absolute inset-0 scale-90 opacity-70 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute inset-0 opacity-70 group-hover:opacity-100 transition-opacity">
                       <Image src={celeb.bg} alt="" fill className="object-contain" />
                     </div>
                     {/* Portrait */}
-                    <div className="relative w-[80%] h-[90%] rounded-[2rem] overflow-hidden z-10 shadow-2xl transition-transform group-hover:-translate-y-2">
-                      <Image src={celeb.image} alt={celeb.name} fill className="object-cover object-top" />
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] md:w-[80%] h-[90%] md:h-[95%] rounded-[2rem] overflow-hidden z-10 shadow-2xl transition-transform group-hover:-translate-y-2">
+                      <Image src={celeb.image} alt={celeb.name} fill className="object-contain md:object-cover object-top" />
                     </div>
                   </div>
                   <h3 className="text-base md:text-xl text-[#FFF113] uppercase leading-none text-center">{celeb.name}</h3>
