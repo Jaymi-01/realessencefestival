@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -36,9 +37,11 @@ export default function Hero({ marginClassName }: HeroProps) {
               sizes="(max-width: 768px) 180px, 380px"
             />
           </div>
-          <Button className="bg-[#FFEFAD] text-black hover:bg-white rounded-full px-6 md:px-12 py-2 md:py-3 text-lg md:text-2xl shadow-lg border-none h-auto uppercase shrink-0 mt-2">
-            GALLERY
-          </Button>
+          <Link href="/gallery">
+            <Button className="bg-[#FFEFAD] text-black hover:bg-white rounded-full px-6 md:px-12 py-2 md:py-3 text-lg md:text-2xl shadow-lg border-none h-auto uppercase shrink-0 mt-2">
+              GALLERY
+            </Button>
+          </Link>
         </div>
 
         {/* Content Layout */}
