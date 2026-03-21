@@ -91,10 +91,10 @@ export default function Details() {
             whileHover="hover"
             className="group relative bg-[#004A1F] rounded-full py-2 md:py-4 px-6 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden min-h-[40px] md:min-h-[64px] flex items-center justify-center"
           >
-            <motion.div variants={mainVariants} className="text-center text-sm md:text-2xl uppercase">
+            <motion.div variants={mainVariants} className="text-center text-[10px] md:text-2xl uppercase leading-tight px-2">
               MUSIC PERFORMANCE BY: SHODAY
             </motion.div>
-            <motion.div variants={hoverVariants} className="absolute inset-0 flex items-center justify-center text-center px-4 text-xs md:text-lg uppercase">
+            <motion.div variants={hoverVariants} className="absolute inset-0 flex items-center justify-center text-center px-4 text-[9px] md:text-lg uppercase leading-tight">
               Get ready for back-to-back energy with Shoday, DJs, and other entertainers;
             </motion.div>
           </motion.div>
@@ -109,10 +109,10 @@ export default function Details() {
                 whileHover="hover"
                 className={`group relative ${act.bg} rounded-full py-3 md:py-6 px-2 cursor-pointer shadow-xl border-2 border-white/5 overflow-hidden min-h-[50px] md:min-h-[100px] flex items-center justify-center`}
               >
-                <motion.div variants={mainVariants} className="text-center text-[10px] md:text-xl uppercase leading-tight whitespace-pre-line">
+                <motion.div variants={mainVariants} className="text-center text-[9px] md:text-xl uppercase leading-tight whitespace-pre-line">
                   {act.title}
                 </motion.div>
-                <motion.div variants={hoverVariants} className="absolute inset-0 flex items-center justify-center text-center px-2 text-[9px] md:text-base leading-tight">
+                <motion.div variants={hoverVariants} className="absolute inset-0 flex items-center justify-center text-center px-2 text-[8px] md:text-base leading-tight">
                   {act.desc}
                 </motion.div>
               </motion.div>
