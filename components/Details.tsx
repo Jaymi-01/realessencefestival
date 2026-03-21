@@ -54,22 +54,25 @@ export default function Details() {
 
       <div className="relative z-20 w-full px-6 flex flex-col items-center">
 
-        {/* ... Vector Date and Venue ... */}
+        {/* Vector Date */}
         <div className="relative w-full max-w-[320px] md:max-w-[550px] -mt-[280px] md:-mt-[420px] mb-6">
           <div className="relative w-full aspect-[1046/484]">
             <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" sizes="(max-width: 768px) 320px, 550px" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-10 pb-2">
-              <h2 className="text-[#C10706] text-2xl md:text-3xl font-lilita">APRIL 5TH-6TH, 2026</h2>
-              <p className="text-black text-sm md:text-xl mt-1 font-lilita capitalize">A Day Packed with Real Enjoyment</p>
-              <p className="text-black text-sm md:text-sm mt-1 font-sans capitalize"><span className="font-semibold">The Real Essence Festival</span> is designed to deliver unforgettable moments. From tasting delicious meals to dancing to great music and participating in exciting games, every corner of the festival is filled with energy, flavor, and fun.</p>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 pb-2">
+              <h2 className="text-[#C10706] text-xl md:text-3xl font-lilita leading-tight">APRIL 5TH-6TH, 2026</h2>
+              <p className="text-black text-xs md:text-xl mt-1 font-lilita capitalize">A Day Packed with Real Enjoyment</p>
+              <p className="text-black text-[10px] md:text-sm mt-1 font-sans capitalize md:block">
+                <span className="font-semibold">The Real Essence Festival</span> is designed to deliver unforgettable moments. From tasting delicious meals to dancing to great music and participating in exciting games, every corner of the festival is filled with energy, flavor, and fun.
+              </p>
             </div>
           </div>
         </div>
 
+        {/* Vector Venue */}
         <div className="relative w-full max-w-[280px] md:max-w-[450px] -mt-[40px] md:-mt-[100px] mb-12">
           <div className="relative w-full aspect-[800/450]">
             <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" sizes="(max-width: 768px) 280px, 450px" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-10 pt-2 md:pt-6">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 pt-2 md:pt-6">
               <p className="text-[#FFF113] text-lg md:text-3xl flex items-center gap-2 md:gap-3">
                 <span className="text-white">VENUE:</span> IKEJA CITY MALL
               </p>
