@@ -88,11 +88,17 @@ export default function Hero({ marginClassName }: HeroProps) {
               sizes="(max-width: 768px) 180px, 380px"
             />
           </div>
-          <Link href="/gallery">
-            <Button className="bg-[#FFEFAD] text-black hover:bg-white rounded-full px-6 md:px-12 py-2 md:py-3 text-lg md:text-2xl shadow-lg border-none h-auto uppercase shrink-0 mt-2 font-lilita">
-              GALLERY
-            </Button>
-          </Link>
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          >
+            <Link href="/gallery">
+              <Button className="bg-[#FFEFAD] text-black hover:bg-white rounded-full px-6 md:px-12 py-2 md:py-3 text-lg md:text-2xl shadow-lg border-none h-auto uppercase shrink-0 mt-2 font-lilita">
+                GALLERY
+              </Button>
+            </Link>
+          </motion.div>
         </div>
 
         {/* Content Layout */}
