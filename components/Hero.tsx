@@ -1,16 +1,66 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { toast } from "sonner";
+import { CircleNotch } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { registerUser } from "@/app/actions/register";
+
+const formSchema = z.object({
+  firstName: z.string().min(1, "First Name is required"),
+  lastName: z.string().min(1, "Last Name is required"),
+  gender: z.string().min(1, "Gender is required"),
+  phone: z.string().min(1, "Phone is required"),
+  email: z.string().email("Invalid email address"),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 interface HeroProps {
   marginClassName: string;
 }
 
 export default function Hero({ marginClassName }: HeroProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    mode: "all",
+  });
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      const result = await registerUser(data);
+      
+      if (result.success) {
+        toast.success("You have successfully registered, check your mail for a confirmation email");
+        reset();
+      } else {
+        toast.error("Registration failed", {
+          description: result.error || "Please try again later.",
+        });
+      }
+    } catch (err) {
+      toast.error("An unexpected error occurred");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative bg-[#B11217] min-h-screen md:min-h-[1000px] flex flex-col pt-8 md:pt-12 pb-12 md:pb-24 overflow-hidden font-lilita text-white">
       {/* Background Pattern */}
@@ -61,29 +111,57 @@ export default function Hero({ marginClassName }: HeroProps) {
 
           {/* Form Section: Replicated Layered Design with White Border */}
           <div className="mt-10 md:mt-[-95px] flex justify-center md:justify-end w-full md:w-auto order-2">
-            {/* Base Green Container with White Border */}
-            <div className="bg-[#004700] rounded-[3rem] w-full max-w-[400px] md:w-[420px] pt-8 md:pt-10 overflow-hidden shadow-[0_0_80px_#FFF113]/50 flex flex-col border-3 border-white">
+            <form 
+              onSubmit={handleSubmit(onSubmit)}
+              className="bg-[#004700] rounded-[3rem] w-full max-w-[400px] md:w-[420px] pt-8 md:pt-10 overflow-hidden shadow-[0_0_80px_#FFF113]/50 flex flex-col border-3 border-white"
+            >
               <h2 className="text-xl md:text-2xl text-white uppercase leading-tight text-center mb-6 px-6">
                 REGISTER FOR THE BEST<br />DAY OF YOUR LIFE
               </h2>
               
-              {/* White Container placed "on top" */}
               <div className="bg-white rounded-t-[2.5rem] p-6 md:p-8 space-y-4 w-full flex-grow">
-                {["First Name", "Last Name", "Gender", "Phone", "Email"].map((label) => (
-                  <div key={label} className="flex h-[48px] md:h-[52px] rounded-full overflow-hidden border-2 border-black">
-                    <div className="bg-black text-white flex items-center justify-center w-[110px] md:w-[130px] shrink-0">
-                      <Label className="text-base md:text-lg m-0 leading-none font-lilita">{label}</Label>
+                {[
+                  { label: "First Name", id: "firstName", type: "text", auto: "given-name" },
+                  { label: "Last Name", id: "lastName", type: "text", auto: "family-name" },
+                  { label: "Gender", id: "gender", type: "text", auto: "sex" },
+                  { label: "Phone", id: "phone", type: "tel", auto: "tel" },
+                  { label: "Email", id: "email", type: "email", auto: "email" },
+                ].map((field) => (
+                  <div key={field.id} className="space-y-1">
+                    <div className={`flex h-[48px] md:h-[52px] rounded-full overflow-hidden border-2 ${errors[field.id as keyof FormData] ? 'border-red-500' : 'border-black'}`}>
+                      <div className="bg-black text-white flex items-center justify-center w-[110px] md:w-[130px] shrink-0">
+                        <Label className="text-base md:text-lg m-0 leading-none font-lilita">{field.label}</Label>
+                      </div>
+                      <div className="flex-1 bg-white">
+                        <Input 
+                          {...register(field.id as keyof FormData)}
+                          type={field.type}
+                          autoComplete={field.auto}
+                          className="w-full h-full border-none shadow-none rounded-none focus-visible:ring-0 px-4 text-black font-sans text-base md:text-lg bg-transparent" 
+                        />
+                      </div>
                     </div>
-                    <div className="flex-1 bg-white">
-                      <Input className="w-full h-full border-none shadow-none rounded-none focus-visible:ring-0 px-4 text-black font-sans text-base md:text-lg bg-transparent" />
-                    </div>
+                    {errors[field.id as keyof FormData] && (
+                      <p className="text-red-500 text-[10px] md:text-xs font-sans px-4">
+                        {errors[field.id as keyof FormData]?.message}
+                      </p>
+                    )}
                   </div>
                 ))}
-                <Button className="w-full bg-[#B11217] hover:bg-[#8B0E12] text-white rounded-full py-6 md:py-8 text-xl md:text-3xl shadow-lg mt-4 uppercase transition-transform active:scale-95 leading-none">
-                  SUBMIT
+                
+                <Button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#B11217] hover:bg-[#8B0E12] text-white rounded-full py-6 md:py-8 text-xl md:text-3xl shadow-lg mt-4 uppercase transition-transform active:scale-95 leading-none disabled:opacity-70 disabled:active:scale-100"
+                >
+                  {isSubmitting ? (
+                    <CircleNotch size={32} className="animate-spin" />
+                  ) : (
+                    "SUBMIT"
+                  )}
                 </Button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
