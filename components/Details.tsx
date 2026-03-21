@@ -130,13 +130,11 @@ export default function Details() {
         </motion.div>
 
         <div className="w-full max-w-[280px] md:max-w-[550px] space-y-3 md:space-y-4 pb-0">
-          {/* Music Performance Pill - Slide From Down */}
           <motion.div 
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
-            onMouseEnter={() => !isMobile && setHoveredIndex(null)} // Dummy to avoid unused, actual behavior via whileHover
           >
             <motion.div
               initial={isMobile ? "hover" : "initial"}
