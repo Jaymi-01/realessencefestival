@@ -20,6 +20,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Real Essence Festival",
   description: "Experience the ultimate fusion of food, music, and culture",
+  icons: {
+    icon: "/assets/LOGO LOCKUP 1.png",
+  },
 };
 
 export default function RootLayout({
