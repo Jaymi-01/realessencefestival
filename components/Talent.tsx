@@ -56,7 +56,7 @@ export default function Talent() {
 
   return (
     <section 
-      className="relative min-h-[1000px] pt-8 md:pt-12 pb-24 overflow-hidden font-lilita text-white"
+      className="relative min-h-[800px] pt-8 md:pt-12 pb-24 overflow-hidden font-lilita text-white"
       style={{ 
         backgroundImage: 'url("/assets/BG PATTERN 3-03-03 1.svg")',
         backgroundSize: 'cover',
@@ -66,10 +66,10 @@ export default function Talent() {
     >
       {/* Intersect Borders */}
       <div className="absolute top-0 bottom-0 -left-[49px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
+        <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-bottom" />
       </div>
       <div className="absolute top-0 bottom-0 -right-[49px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
+        <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-bottom" />
       </div>
 
       {/* Main Container */}
@@ -99,7 +99,7 @@ export default function Talent() {
             </div>
 
             {/* Celebrities Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 md:gap-x-4 gap-y-8 md:gap-y-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 md:gap-x-4 gap-y-12 md:gap-y-24">
               {celebrities.map((celeb, i) => (
                 <div key={i} className="flex flex-col items-center group">
                   <div className="relative w-full pb-[110%] flex items-end justify-center mb-4">
