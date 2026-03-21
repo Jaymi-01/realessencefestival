@@ -47,7 +47,7 @@ export default function ChickenEssence() {
                 className="w-[340px] md:w-[580px] h-auto"
               />
             </div>
-            <span className="text-lg md:text-3xl text-black uppercase rotate-0 md:-rotate-6 -mt-16 md:-mt-36">Tasty Chicken</span>
+            <span className="text-lg md:text-2xl text-[#C10706] capitalize rotate-0 md:-rotate-6 -mt-16 md:-mt-32">Tasty Chicken</span>
           </motion.div>
           <motion.div 
             className="flex flex-col items-center"
@@ -65,7 +65,7 @@ export default function ChickenEssence() {
                 className="w-[340px] md:w-[580px] h-auto"
               />
             </div>
-            <span className="text-lg md:text-3xl text-black uppercase rotate-0 md:rotate-6 -mt-12 md:-mt-28">Rich Spices</span>
+            <span className="text-lg md:text-2xl text-black capitalize rotate-0 md:rotate-6 -mt-12 md:-mt-25">Rich Spices</span>
           </motion.div>
         </div>
       </div>
