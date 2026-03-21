@@ -31,20 +31,46 @@ export default function ChickenEssence() {
 
         {/* Products Row */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-0 w-full px-4 md:px-8">
-          <Image 
-            src="/assets/Tasty Chicken 1.svg" 
-            alt="Tasty Chicken" 
-            width={982}
-            height={915}
-            className="w-[340px] md:w-[580px] h-auto"
-          />
-          <Image 
-            src="/assets/Rich Spices 1.svg" 
-            alt="Rich Spices" 
-            width={885}
-            height={764}
-            className="w-[340px] md:w-[580px] h-auto"
-          />
+          <motion.div 
+            className="flex flex-col items-center"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ 
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              scale: { type: "spring", stiffness: 300 }
+            }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="rotate-0 md:-rotate-3">
+              <Image 
+                src="/assets/Tasty Chicken 1.svg" 
+                alt="Tasty Chicken" 
+                width={982}
+                height={915}
+                className="w-[340px] md:w-[580px] h-auto"
+              />
+            </div>
+            <span className="text-lg md:text-3xl text-[#C10706] uppercase rotate-0 md:-rotate-6 -mt-16 md:-mt-36">Tasty Chicken</span>
+          </motion.div>
+          <motion.div 
+            className="flex flex-col items-center"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ 
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+              scale: { type: "spring", stiffness: 300 }
+            }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="rotate-0 md:rotate-3">
+              <Image 
+                src="/assets/Rich Spices 1.svg" 
+                alt="Rich Spices" 
+                width={885}
+                height={764}
+                className="w-[340px] md:w-[580px] h-auto"
+              />
+            </div>
+            <span className="text-lg md:text-3xl text-black uppercase rotate-0 md:rotate-6 -mt-12 md:-mt-28">Rich Spices</span>
+          </motion.div>
         </div>
       </div>
     </section>
