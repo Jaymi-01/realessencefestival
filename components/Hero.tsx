@@ -24,7 +24,7 @@ export default function Hero({ marginClassName }: HeroProps) {
         />
       </div>
 
-      <div className={`w-full px-6 md:${marginClassName} relative z-10`}>
+      <div className={`w-full px-6 md:px-20 relative z-10`}>
         {/* Header Row */}
         <div className="flex justify-between items-center md:items-start w-full relative z-20 mb-10 md:mb-0">
           <div className="w-[180px] h-[90px] md:w-[380px] md:h-[190px] relative">
