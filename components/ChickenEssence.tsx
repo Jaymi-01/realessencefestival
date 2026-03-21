@@ -35,10 +35,8 @@ export default function ChickenEssence() {
             className="flex flex-col items-center"
             animate={{ y: [0, -15, 0] }}
             transition={{ 
-              y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-              scale: { type: "spring", stiffness: 300 }
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
             }}
-            whileHover={{ scale: 1.05 }}
           >
             <div className="rotate-0 md:-rotate-3">
               <Image 
@@ -49,16 +47,14 @@ export default function ChickenEssence() {
                 className="w-[340px] md:w-[580px] h-auto"
               />
             </div>
-            <span className="text-lg md:text-3xl text-[#C10706] uppercase rotate-0 md:-rotate-6 -mt-16 md:-mt-36">Tasty Chicken</span>
+            <span className="text-lg md:text-3xl text-black uppercase rotate-0 md:-rotate-6 -mt-16 md:-mt-36">Tasty Chicken</span>
           </motion.div>
           <motion.div 
             className="flex flex-col items-center"
             animate={{ y: [0, -15, 0] }}
             transition={{ 
-              y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-              scale: { type: "spring", stiffness: 300 }
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
             }}
-            whileHover={{ scale: 1.05 }}
           >
             <div className="rotate-0 md:rotate-3">
               <Image 
