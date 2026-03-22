@@ -1,38 +1,48 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "@phosphor-icons/react";
+
+interface Activity {
+  title: string;
+  desc: string;
+  bg: string;
+}
 
 export default function Details() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [hoveredActivity, setHoveredActivity] = useState<Activity | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const activities = [
-    { title: "SUPREME COOKING\nCOMPETITION", desc: "Bring your A-game, showcase your cooking skills, and win big.", bg: "bg-[#B11217]" },
-    { title: "MASTERCLASS", desc: "Tap into knowledge from the best minds in the game.", bg: "bg-[#0000B1]" },
-    { title: "DANCE COMPETITION", desc: "Dance your way to the spotlight, and win prizes.", bg: "bg-[#FF6B6B]" },
-    { title: "GAMES", desc: "Games and fun activities to keep the energy going all day.", bg: "bg-[#C06014]" },
+  const activities: Activity[] = [
+    { title: "SUPREME COOKING\nCOMPETITION", desc: "Bring your A-game, showcase your cooking skills, and win big with our culinary challenge.", bg: "bg-[#B11217]" },
+    { title: "MASTERCLASS", desc: "Tap into knowledge from the best minds in the game and elevate your skills.", bg: "bg-[#0000B1]" },
+    { title: "DANCE COMPETITION", desc: "Dance your way to the spotlight, and win amazing prizes in our high-energy face-off.", bg: "bg-[#FF6B6B]" },
+    { title: "GAMES", desc: "Exciting games and fun activities to keep the energy going all day long.", bg: "bg-[#C06014]" },
   ];
 
-  const mainVariants = {
-    initial: { opacity: 1, y: 0 },
-    hover: { opacity: 0, y: -20 },
+  const rybeenaActivity: Activity = { 
+    title: "MUSIC PERFORMANCE BY: RYBEENA", 
+    desc: "Get ready for back-to-back energy with Rybeena, DJs, and other entertainers as we vibe through the festival.", 
+    bg: "bg-[#004A1F]" 
   };
 
-  const hoverVariants = {
-    initial: { opacity: 0, y: 20 },
-    hover: { opacity: 1, y: 0 },
+  const handleMouseEnter = (activity: Activity) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setHoveredActivity(activity);
   };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setHoveredActivity(null);
+    }, 100);
+  };
+
+  const CAPSULE_HEIGHT = "h-[clamp(60px,9vh,85px)]";
 
   return (
-    <section className="relative md:min-h-[1000px] flex flex-col items-center justify-center overflow-visible py-12 md:py-24 font-lilita text-white">
+    <section className="relative min-h-screen flex flex-col items-center overflow-visible pb-[8vh] pt-0 font-lilita text-white">
       {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -40,96 +50,87 @@ export default function Details() {
           alt="" 
           fill 
           className="object-cover"
-          sizes="100vw"
+          priority
         />
       </div>
 
-      {/* Side Plates with Slide In */}
+      {/* Side Plates - Scaled down to prevent crowding center content */}
       <motion.div 
         initial={{ x: -100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] md:w-[450px] h-[900px] z-10 pointer-events-none hidden md:block"
+        className="absolute left-0 top-1/2 -translate-y-1/2 w-[clamp(240px,25vw,450px)] aspect-[1/2] z-10 pointer-events-none opacity-50 lg:opacity-100"
       >
-        <Image src="/assets/plate-left.png" alt="" fill className="object-contain object-left" sizes="450px" />
+        <Image src="/assets/plate-left.png" alt="" fill className="object-contain object-left" priority />
       </motion.div>
       <motion.div 
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] md:w-[450px] h-[900px] z-10 pointer-events-none hidden md:block"
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[clamp(240px,25vw,450px)] aspect-[1/2] z-10 pointer-events-none opacity-50 lg:opacity-100"
       >
-        <Image src="/assets/plate-right.png" alt="" fill className="object-contain object-right" sizes="450px" />
+        <Image src="/assets/plate-right.png" alt="" fill className="object-contain object-right" priority />
       </motion.div>
 
-      <div className="relative z-20 w-full px-6 flex flex-col items-center">
+      {/* Main Container - Anchored to top with stable side-gap */}
+      <div className="relative z-20 w-full max-w-[1440px] mx-auto px-6 flex flex-col items-center pt-[1vh]">
 
-        {/* Vector Date */}
+        {/* Vector Date - Orientation-aware width for cross-device consistency */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative w-full max-w-[320px] md:max-w-[550px] mt-0 md:-mt-[350px] mb-6"
+          className="relative w-full max-w-[clamp(380px,85vw,620px)] landscape:max-w-[500px] -mt-[20px] lg:-mt-[50px] mb-[2vh]"
         >
           <div className="relative w-full aspect-[1046/484]">
-            <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" sizes="(max-width: 768px) 320px, 550px" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 pb-2">
+            <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-[8vw] pt-[2vh] pb-[3vh]">
               <motion.h2 
-                initial={{ x: isMobile ? 0 : -50, y: isMobile ? 20 : 0, opacity: 0 }}
-                whileInView={{ x: 0, y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-                className="text-[#C10706] text-xl md:text-3xl font-lilita leading-tight"
+                className="text-[#C10706] text-[clamp(18px,3.2vw,44px)] landscape:text-[clamp(18px,2.5vw,36px)] font-lilita leading-[1.1] mt-[1.5vh]"
               >
                 APRIL 5TH-6TH, 2026
               </motion.h2>
               <motion.p 
-                initial={{ x: isMobile ? 0 : 50, y: isMobile ? 20 : 0, opacity: 0 }}
-                whileInView={{ x: 0, y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
-                className="text-black text-xs md:text-xl mt-1 font-lilita capitalize"
+                className="text-[#004700] text-[clamp(14px,2.4vw,30px)] landscape:text-[clamp(14px,2vw,24px)] mt-[0.2vh] font-lilita capitalize leading-tight"
               >
                 A Day Packed with Real Enjoyment
               </motion.p>
               <motion.p 
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="text-black text-[10px] md:text-sm mt-1 font-sans capitalize md:block"
+                className="text-black text-[clamp(12px,1.6vw,18px)] landscape:text-[clamp(11px,1.3vw,16px)] mt-[1.5vh] font-sans capitalize leading-relaxed max-w-[95%]"
               >
-                <span className="font-semibold">The Real Essence Festival</span> is designed to deliver unforgettable moments. From tasting delicious meals to dancing to great music and participating in exciting games, every corner of the festival is filled with energy, flavor, and fun.
+                <span className="font-semibold text-black/80">The Real Essence Festival</span> is designed to deliver unforgettable moments. From tasting delicious meals to dancing to great music and participating in exciting games, every corner of the festival is filled with energy, flavor, and fun.
               </motion.p>
             </div>
           </div>
         </motion.div>
 
-        {/* Vector Venue - Slide In From Down */}
+        {/* Vector Venue - Proportional overlap with Date */}
         <motion.div 
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-          className="relative w-full max-w-[280px] md:max-w-[450px] -mt-[70px] md:-mt-[100px] mb-2 z-20"
+          className="relative w-full max-w-[480px] -mt-[clamp(60px,8vw,120px)] mb-[1vh] z-20"
         >
           <div className="relative w-full aspect-[800/450]">
-            <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" sizes="(max-width: 768px) 280px, 450px" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 pt-2 md:pt-6">
-              <p className="text-[#FFF113] text-lg md:text-3xl flex items-center gap-2 md:gap-3">
+            <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-10 pt-4 gap-1">
+              <p className="text-[#FFF113] text-[clamp(20px,2.8vw,38px)] flex items-center gap-3 leading-none">
                 <span className="text-white">VENUE:</span> IKEJA CITY MALL
               </p>
-              <p className="text-[#FFF113] text-lg md:text-3xl">
+              <p className="text-[#FFF113] text-[clamp(20px,2.8vw,38px)] leading-none">
                 <span className="text-white">TIME:</span> 10AM
               </p>
             </div>
           </div>
         </motion.div>
 
-        <div className="w-full max-w-[280px] md:max-w-[550px] space-y-3 md:space-y-4 pb-0">
+        {/* Activities Section */}
+        <div className="w-full max-w-[650px] space-y-[2vh] pb-0">
+          {/* Rybeena Wide Capsule */}
           <motion.div 
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -137,22 +138,19 @@ export default function Details() {
             transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
           >
             <motion.div
-              initial={isMobile ? "hover" : "initial"}
-              animate={isMobile ? "hover" : "initial"}
-              whileHover="hover"
-              className="group relative bg-[#004A1F] rounded-full py-2 md:py-4 px-6 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden min-h-[40px] md:min-h-[64px] flex items-center justify-center"
+              onMouseEnter={() => handleMouseEnter(rybeenaActivity)}
+              onMouseLeave={handleMouseLeave}
+              whileHover={{ scale: 1.02 }}
+              className={`group relative bg-[#004A1F] rounded-full px-8 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-colors hover:bg-[#005A2F]`}
             >
-              <motion.div variants={mainVariants} className="text-center text-[10px] md:text-2xl uppercase leading-tight px-2">
-                MUSIC PERFORMANCE BY: SHODAY
-              </motion.div>
-              <motion.div variants={hoverVariants} className="absolute inset-0 flex items-center justify-center text-center px-4 text-[9px] md:text-lg uppercase leading-tight">
-                Get ready for back-to-back energy with Shoday, DJs, and other entertainers;
-              </motion.div>
+              <div className="text-center text-[clamp(16px,2vw,28px)] uppercase leading-tight px-2">
+                MUSIC PERFORMANCE BY: RYBEENA
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Activity Grid - Pills Slide From Down */}
-          <div className="grid grid-cols-2 gap-2 md:gap-4">
+          {/* Activity Grid */}
+          <div className="grid grid-cols-2 gap-[2vh]">
             {activities.map((act, i) => (
               <motion.div 
                 key={i} 
@@ -162,23 +160,58 @@ export default function Details() {
                 transition={{ duration: 0.5, delay: 1.1 + (i * 0.1), ease: "easeOut" }}
               >
                 <motion.div
-                  initial={isMobile ? "hover" : "initial"}
-                  animate={isMobile ? "hover" : "initial"}
-                  whileHover="hover"
-                  className={`group relative ${act.bg} rounded-full py-3 md:py-6 px-2 cursor-pointer shadow-xl border-2 border-white/5 overflow-hidden min-h-[50px] md:min-h-[100px] flex items-center justify-center w-full`}
+                  onMouseEnter={() => handleMouseEnter(act)}
+                  onMouseLeave={handleMouseLeave}
+                  whileHover={{ scale: 1.02 }}
+                  className={`group relative ${act.bg} rounded-full px-4 cursor-pointer shadow-xl border-2 border-white/5 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-transform`}
                 >
-                  <motion.div variants={mainVariants} className="text-center text-[9px] md:text-xl uppercase leading-tight whitespace-pre-line">
+                  <div className="text-center text-[clamp(12px,1.4vw,20px)] uppercase leading-tight whitespace-pre-line px-1">
                     {act.title}
-                  </motion.div>
-                  <motion.div variants={hoverVariants} className="absolute inset-0 flex items-center justify-center text-center px-2 text-[8px] md:text-base leading-tight">
-                    {act.desc}
-                  </motion.div>
+                  </div>
                 </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Activity Card (Hover Modal) */}
+      <AnimatePresence>
+        {hoveredActivity && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 pointer-events-none">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"
+            />
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 10 }}
+              className="relative w-full max-w-[450px] bg-white p-8 rounded-[2.5rem] shadow-2xl border-4 border-[#FFF113] overflow-hidden pointer-events-auto"
+              onMouseEnter={() => {
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+              }}
+              onMouseLeave={handleMouseLeave}
+            >
+              {/* Background Decoration */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFF113]/10 rounded-full -mr-16 -mt-16 blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl" />
+
+              <div className="relative z-10 text-center flex flex-col items-center">
+                <h3 className="text-[clamp(22px,2.5vw,36px)] leading-tight mb-4 uppercase tracking-tight text-black">
+                  {hoveredActivity.title}
+                </h3>
+                <div className="w-12 h-1 bg-[#C10706] rounded-full mb-6" />
+                <p className="text-[clamp(14px,1.2vw,18px)] font-sans leading-relaxed text-black/80">
+                  {hoveredActivity.desc}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
