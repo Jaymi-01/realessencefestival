@@ -10,7 +10,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const SECTION_MARGIN = "px-32";
+  const SECTION_MARGIN = "px-[8vw] lg:px-[10vw]";
 
   useEffect(() => {
     // Artificial delay to show the loading animation
