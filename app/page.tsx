@@ -29,7 +29,7 @@ export default function Home() {
         <Hero marginClassName={SECTION_MARGIN} />
 
         {/* SECTION 2: DETAILS */}
-        <Details />
+        <Details marginClassName={SECTION_MARGIN} />
 
         {/* SECTION 3: TALENTS */}
         <Talent />
