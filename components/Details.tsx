@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Activity {
@@ -16,7 +16,15 @@ interface DetailsProps {
 
 export default function Details({ marginClassName }: DetailsProps) {
   const [hoveredActivity, setHoveredActivity] = useState<Activity | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const activities: Activity[] = [
     { title: "SUPREME COOKING\nCOMPETITION", desc: "Bring your A-game, showcase your cooking skills, and win big with our culinary challenge.", bg: "bg-[#B11217]" },
@@ -32,11 +40,13 @@ export default function Details({ marginClassName }: DetailsProps) {
   };
 
   const handleMouseEnter = (activity: Activity) => {
+    if (isMobile) return;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setHoveredActivity(activity);
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     timeoutRef.current = setTimeout(() => {
       setHoveredActivity(null);
     }, 100);
@@ -132,88 +142,134 @@ export default function Details({ marginClassName }: DetailsProps) {
         </motion.div>
 
         {/* Activities Section */}
-        <div className="w-full max-w-[760px] space-y-[2vh] lg:space-y-[2.5vh] pb-0 -mt-[6vh] md:-mt-[5vh] lg:-mt-[6vh]">
-          {/* Rybeena Wide Capsule */}
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-          >
-            <motion.div
-              onMouseEnter={() => handleMouseEnter(rybeenaActivity)}
-              onMouseLeave={handleMouseLeave}
-              whileHover={{ scale: 1.02 }}
-              className={`group relative bg-[#004A1F] rounded-full px-6 md:px-8 cursor-pointer shadow-xl border-2 border-white/20 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-colors hover:bg-[#005A2F]`}
+        <div className="w-full max-w-[760px] space-y-[2vh] lg:space-y-[2.5vh] pb-0 mt-4 md:-mt-[5vh] lg:-mt-[6vh] px-4 md:px-0">
+          
+          {/* Desktop/Tablet Layout (Hidden on Mobile) */}
+          <div className="hidden md:block space-y-[2vh] lg:space-y-[2.5vh]">
+            {/* Rybeena Wide Capsule */}
+            <motion.div 
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             >
-              <div className="text-center text-[clamp(14px,2vw,24px)] lg:text-[clamp(16px,2.2vw,28px)] uppercase leading-none tracking-wide">
-                MUSIC PERFORMANCE BY: RYBEENA
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Activity Grid */}
-          <div className="grid grid-cols-2 gap-[2vh] lg:gap-[3vh]">
-            {activities.map((act, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 + (i * 0.1), ease: "easeOut" }}
+              <motion.div
+                onMouseEnter={() => handleMouseEnter(rybeenaActivity)}
+                onMouseLeave={handleMouseLeave}
+                whileHover={{ scale: 1.02 }}
+                className={`group relative bg-[#004A1F] rounded-full px-6 md:px-8 cursor-pointer shadow-xl border-2 border-white/20 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-colors hover:bg-[#005A2F]`}
               >
-                <motion.div
-                  onMouseEnter={() => handleMouseEnter(act)}
-                  onMouseLeave={handleMouseLeave}
-                  whileHover={{ scale: 1.02 }}
-                  className={`group relative ${act.bg} rounded-full px-3 md:px-4 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-all`}
-                >
-                  <div className="text-center text-[clamp(11px,1.4vw,18px)] lg:text-[clamp(12px,1.5vw,22px)] uppercase leading-tight whitespace-pre-line px-1">
-                    {act.title}
-                  </div>
-                </motion.div>
+                <div className="text-center text-[clamp(14px,2vw,24px)] lg:text-[clamp(16px,2.2vw,28px)] uppercase leading-none tracking-wide">
+                  MUSIC PERFORMANCE BY: RYBEENA
+                </div>
               </motion.div>
-            ))}
+            </motion.div>
+
+            {/* Activity Grid */}
+            <div className="grid grid-cols-2 gap-[2vh] lg:gap-[3vh]">
+              {activities.map((act, i) => (
+                <motion.div 
+                  key={i} 
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 + (i * 0.1), ease: "easeOut" }}
+                >
+                  <motion.div
+                    onMouseEnter={() => handleMouseEnter(act)}
+                    onMouseLeave={handleMouseLeave}
+                    whileHover={{ scale: 1.02 }}
+                    className={`group relative ${act.bg} rounded-full px-3 md:px-4 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-all`}
+                  >
+                    <div className="text-center text-[clamp(11px,1.4vw,18px)] lg:text-[clamp(12px,1.5vw,22px)] uppercase leading-tight whitespace-pre-line px-1">
+                      {act.title}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          {/* Mobile Layout (Preset Version - Visible only on Mobile) */}
+          <div className="md:hidden space-y-3">
+            {/* Rybeena Card (Full Width) */}
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="bg-[#004A1F] rounded-[1.5rem] p-4 border-2 border-white/20 shadow-lg text-center"
+            >
+              <h3 className="text-[18px] text-[#FFF113] mb-1 uppercase leading-tight">
+                {rybeenaActivity.title}
+              </h3>
+              <p className="text-[12px] font-sans text-white/90 leading-normal">
+                {rybeenaActivity.desc}
+              </p>
+            </motion.div>
+
+            {/* Other Activities Grid (2 Columns) */}
+            <div className="grid grid-cols-2 gap-3">
+              {activities.map((act, i) => (
+                <motion.div 
+                  key={i} 
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`${act.bg} rounded-[1.2rem] p-3 border-2 border-white/10 shadow-lg text-center flex flex-col items-center justify-center min-h-[110px]`}
+                >
+                  <h3 className="text-[12px] text-white mb-1.5 uppercase leading-tight whitespace-pre-line">
+                    {act.title}
+                  </h3>
+                  <p className="text-[9px] font-sans text-white/80 leading-tight">
+                    {act.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* Activity Card (Hover Modal) */}
-      <AnimatePresence>
-        {hoveredActivity && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 pointer-events-none">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"
-            />
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 10 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 10 }}
-              className="relative w-full max-w-[450px] bg-white p-8 rounded-[2.5rem] shadow-2xl border-4 border-[#FFF113] overflow-hidden pointer-events-auto"
-              onMouseEnter={() => {
-                if (timeoutRef.current) clearTimeout(timeoutRef.current);
-              }}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFF113]/10 rounded-full -mr-16 -mt-16 blur-2xl" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl" />
+      {/* Activity Card (Hover Modal - Hidden on Mobile) */}
+      {!isMobile && (
+        <AnimatePresence>
+          {hoveredActivity && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 pointer-events-none">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"
+              />
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0, y: 10 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 10 }}
+                className="relative w-full max-w-[450px] bg-white p-8 rounded-[2.5rem] shadow-2xl border-4 border-[#FFF113] overflow-hidden pointer-events-auto"
+                onMouseEnter={() => {
+                  if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                }}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFF113]/10 rounded-full -mr-16 -mt-16 blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl" />
 
-              <div className="relative z-10 text-center flex flex-col items-center">
-                <h3 className="text-[clamp(22px,2.5vw,36px)] leading-tight mb-4 uppercase tracking-tight text-black">
-                  {hoveredActivity.title}
-                </h3>
-                <div className="w-12 h-1 bg-[#C10706] rounded-full mb-6" />
-                <p className="text-[clamp(14px,1.2vw,18px)] font-sans leading-relaxed text-black/80">
-                  {hoveredActivity.desc}
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+                <div className="relative z-10 text-center flex flex-col items-center">
+                  <h3 className="text-[clamp(22px,2.5vw,36px)] leading-tight mb-4 uppercase tracking-tight text-black">
+                    {hoveredActivity.title}
+                  </h3>
+                  <div className="w-12 h-1 bg-[#C10706] rounded-full mb-6" />
+                  <p className="text-[clamp(14px,1.2vw,18px)] font-sans leading-relaxed text-black/80">
+                    {hoveredActivity.desc}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+      )}
     </section>
   );
 }
