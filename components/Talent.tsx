@@ -81,15 +81,15 @@ export default function Talent({ marginClassName }: TalentProps) {
       <div className={`max-w-[1440px] mx-auto w-full relative z-20 flex flex-col ${marginClassName || "px-5 md:px-[6vw] lg:px-[10vw]"}`}>
 
         {/* Content Row: Mascot Left | Talent Grid Right */}
-        <div className="flex flex-row items-stretch w-full gap-8">
+        <div className="flex flex-col md:flex-row items-stretch w-full gap-8">
 
-          {/* Mascot — Container height matches Grid + Blobs bottom */}
+          {/* Mascot — Responsive sizing for mobile vs tablet/desktop */}
           <motion.div 
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="shrink-0 relative w-[clamp(300px,32vw,500px)] min-h-0"
+            className="shrink-0 relative w-full md:w-[clamp(250px,30vw,450px)] min-h-[300px] md:min-h-0 order-2 md:order-1 mt-12 md:mt-0"
           >
             <Image 
               src="/assets/MASCOT 1.png" 
@@ -100,7 +100,7 @@ export default function Talent({ marginClassName }: TalentProps) {
           </motion.div>
 
           {/* Right side: header + grid */}
-          <div className="flex-1 min-w-0 flex flex-col">
+          <div className="flex-1 min-w-0 flex flex-col order-1 md:order-2">
             {/* Header Text - Centered above the grid */}
             <motion.div 
               initial={{ y: 30, opacity: 0 }}
@@ -109,13 +109,13 @@ export default function Talent({ marginClassName }: TalentProps) {
               transition={{ duration: 0.6 }}
               className="w-full mb-12 text-center"
             >
-              <h2 className="text-[#FFF113] text-[clamp(32px,4vw,60px)] leading-[0.9] drop-shadow-lg lowercase">
+              <h2 className="text-[#FFF113] text-[clamp(28px,4vw,60px)] leading-[0.9] drop-shadow-lg lowercase">
                 big names. bold talent.<br />non-stop vibes.
               </h2>
             </motion.div>
 
-            {/* Celebrities Grid */}
-            <div className="grid grid-cols-3 gap-x-4 gap-y-12">
+            {/* Celebrities Grid - 2 columns on tablet, 3 on desktop */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12">
               {celebrities.map((celeb, i) => (
                 <motion.div 
                   key={i} 
@@ -139,8 +139,8 @@ export default function Talent({ marginClassName }: TalentProps) {
                     </div>
                   </div>
 
-                  {/* Name Blob - Shifted higher to overlap portrait more */}
-                  <div className="relative -mt-[45%] lg:-mt-[40%] w-[115%] h-auto min-h-[clamp(140px,14vw,200px)] flex flex-col items-center justify-center z-20 py-[clamp(20px,2vw,40px)]">
+                  {/* Name Blob - Responsive overlap */}
+                  <div className="relative -mt-[45%] md:-mt-[40%] lg:-mt-[40%] w-[115%] h-auto min-h-[clamp(140px,14vw,200px)] flex flex-col items-center justify-center z-20 py-[clamp(20px,2vw,40px)]">
                     <div className="absolute inset-0 z-0">
                       <Image src="/assets/Mask group.png" alt="" fill className="w-full h-full" />
                     </div>
