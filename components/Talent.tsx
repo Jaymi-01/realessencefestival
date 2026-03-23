@@ -70,15 +70,15 @@ export default function Talent({ marginClassName }: TalentProps) {
       }}
     >
       {/* Intersect Borders - Adjusted for mobile overlap */}
-      <div className="absolute top-0 bottom-0 -left-[45px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+      <div className="absolute top-0 bottom-0 -left-[60px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
         <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-bottom" />
       </div>
-      <div className="absolute top-0 bottom-0 -right-[45px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+      <div className="absolute top-0 bottom-0 -right-[60px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
         <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-bottom" />
       </div>
 
       {/* Main Container */}
-      <div className={`max-w-[1440px] mx-auto w-full relative z-20 flex flex-col px-6 md:px-[6vw] lg:px-[10vw] ${marginClassName || ""}`}>
+      <div className={`max-w-[1440px] mx-auto w-full relative z-20 flex flex-col px-10 md:px-[6vw] lg:px-[10vw] ${marginClassName || ""}`}>
 
         {/* Content Row: Header + Grid at top, Mascot at bottom on Mobile */}
         <div className="flex flex-col md:flex-row items-stretch w-full gap-8">
@@ -118,13 +118,13 @@ export default function Talent({ marginClassName }: TalentProps) {
                       </div>
                     </div>
                     {/* Portrait */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[95%] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden z-10 shadow-2xl transition-transform group-hover:-translate-y-2">
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] md:w-[80%] h-[95%] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden z-10 shadow-2xl transition-transform group-hover:-translate-y-2">
                       <Image src={celeb.image} alt={celeb.name} fill className="object-cover object-top" />
                     </div>
                   </div>
 
                   {/* Name Blob - Responsive overlap and padding */}
-                  <div className="relative -mt-[45%] md:-mt-[40%] lg:-mt-[40%] w-[115%] h-auto min-h-[clamp(100px,18vw,220px)] flex flex-col items-center justify-center z-20 py-4 md:py-[clamp(20px,2vw,40px)]">
+                  <div className="relative -mt-[45%] md:-mt-[40%] lg:-mt-[40%] w-[110%] md:w-[115%] h-auto min-h-[clamp(100px,18vw,220px)] flex flex-col items-center justify-center z-20 py-4 md:py-[clamp(20px,2vw,40px)]">
                     <div className="absolute inset-0 z-0">
                       <Image src="/assets/Mask group.png" alt="" fill className="w-full h-full" />
                     </div>
