@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "@phosphor-icons/react";
 
 interface Activity {
   title: string;
@@ -42,7 +41,7 @@ export default function Details() {
   const CAPSULE_HEIGHT = "h-[clamp(60px,9vh,85px)]";
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center overflow-visible pb-[8vh] pt-0 font-lilita text-white">
+    <section className="relative min-h-screen flex flex-col items-center overflow-visible pb-[10vh] pt-0 font-lilita text-white">
       {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -54,13 +53,13 @@ export default function Details() {
         />
       </div>
 
-      {/* Side Plates - Scaled down to prevent crowding center content */}
+      {/* Side Plates - Massive background scale */}
       <motion.div 
         initial={{ x: -100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-[clamp(240px,25vw,450px)] aspect-[1/2] z-10 pointer-events-none opacity-50 lg:opacity-100"
+        className="absolute left-0 top-1/2 -translate-y-1/2 w-[clamp(450px,35vw,750px)] aspect-[0.7/1] z-10 pointer-events-none opacity-40 lg:opacity-100"
       >
         <Image src="/assets/plate-left.png" alt="" fill className="object-contain object-left" priority />
       </motion.div>
@@ -69,37 +68,37 @@ export default function Details() {
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-[clamp(240px,25vw,450px)] aspect-[1/2] z-10 pointer-events-none opacity-50 lg:opacity-100"
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[clamp(450px,35vw,750px)] aspect-[0.7/1] z-10 pointer-events-none opacity-40 lg:opacity-100"
       >
         <Image src="/assets/plate-right.png" alt="" fill className="object-contain object-right" priority />
       </motion.div>
 
-      {/* Main Container - Anchored to top with stable side-gap */}
-      <div className="relative z-20 w-full max-w-[1440px] mx-auto px-6 flex flex-col items-center pt-[1vh]">
-
-        {/* Vector Date - Orientation-aware width for cross-device consistency */}
+      {/* Main Container - Adjusted to clear the massive background plates */}
+      <div className="relative z-20 w-full max-w-[1440px] mx-auto px-6 lg:px-[22vw] flex flex-col items-center">
+        
+        {/* Vector Date Container - Lowered overlap and original spacious typography */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative w-full max-w-[clamp(380px,85vw,620px)] landscape:max-w-[500px] -mt-[20px] lg:-mt-[50px] mb-[2vh]"
+          className="relative w-full max-w-[clamp(380px,85vw,680px)] lg:max-w-[720px] -mt-[10px] lg:-mt-[30px] mb-0 z-20"
         >
           <div className="relative w-full aspect-[1046/484]">
             <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-[8vw] pt-[2vh] pb-[3vh]">
               <motion.h2 
-                className="text-[#C10706] text-[clamp(18px,3.2vw,44px)] landscape:text-[clamp(18px,2.5vw,36px)] font-lilita leading-[1.1] mt-[1.5vh]"
+                className="text-[#C10706] text-[clamp(18px,3.2vw,48px)] landscape:text-[clamp(18px,2.5vw,36px)] lg:text-[54px] font-lilita leading-[1.2] tracking-wide mt-[1.5vh]"
               >
                 APRIL 5TH-6TH, 2026
               </motion.h2>
               <motion.p 
-                className="text-[#004700] text-[clamp(14px,2.4vw,30px)] landscape:text-[clamp(14px,2vw,24px)] mt-[0.2vh] font-lilita capitalize leading-tight"
+                className="text-[#004700] text-[clamp(14px,2.4vw,32px)] landscape:text-[clamp(14px,2vw,24px)] lg:text-[36px] mt-[0.3vh] font-lilita capitalize leading-tight"
               >
                 A Day Packed with Real Enjoyment
               </motion.p>
               <motion.p 
-                className="text-black text-[clamp(12px,1.6vw,18px)] landscape:text-[clamp(11px,1.3vw,16px)] mt-[1.5vh] font-sans capitalize leading-relaxed max-w-[95%]"
+                className="text-black text-[clamp(11px,1.6vw,18px)] landscape:text-[clamp(11px,1.3vw,16px)] lg:text-[20px] mt-[1.5vh] font-sans capitalize leading-relaxed max-w-[95%]"
               >
                 <span className="font-semibold text-black/80">The Real Essence Festival</span> is designed to deliver unforgettable moments. From tasting delicious meals to dancing to great music and participating in exciting games, every corner of the festival is filled with energy, flavor, and fun.
               </motion.p>
@@ -107,35 +106,35 @@ export default function Details() {
           </div>
         </motion.div>
 
-        {/* Vector Venue - Proportional overlap with Date */}
+        {/* Vector Venue Container - Reduced margin to raise capsules */}
         <motion.div 
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-          className="relative w-full max-w-[480px] -mt-[clamp(60px,8vw,120px)] mb-[1vh] z-20"
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          className="relative w-full max-w-[420px] lg:max-w-[540px] -mt-[clamp(60px,10vw,140px)] lg:-mt-[130px] mb-[2vh] lg:mb-[3vh] z-30"
         >
           <div className="relative w-full aspect-[800/450]">
             <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-10 pt-4 gap-1">
-              <p className="text-[#FFF113] text-[clamp(20px,2.8vw,38px)] flex items-center gap-3 leading-none">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-10 pt-4 gap-1 lg:gap-2">
+              <p className="text-[#FFF113] text-[clamp(16px,2.2vw,28px)] lg:text-[32px] flex items-center gap-3 leading-none uppercase tracking-wider">
                 <span className="text-white">VENUE:</span> IKEJA CITY MALL
               </p>
-              <p className="text-[#FFF113] text-[clamp(20px,2.8vw,38px)] leading-none">
+              <p className="text-[#FFF113] text-[clamp(16px,2.2vw,28px)] lg:text-[32px] leading-none uppercase tracking-wider">
                 <span className="text-white">TIME:</span> 10AM
               </p>
             </div>
           </div>
         </motion.div>
 
-        {/* Activities Section */}
-        <div className="w-full max-w-[650px] space-y-[2vh] pb-0">
+        {/* Activities Section - Tightened spacing and slight negative margin */}
+        <div className="w-full max-w-[720px] space-y-[2vh] lg:space-y-[2vh] pb-0 lg:-mt-[2vh]">
           {/* Rybeena Wide Capsule */}
           <motion.div 
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
             <motion.div
               onMouseEnter={() => handleMouseEnter(rybeenaActivity)}
@@ -143,21 +142,21 @@ export default function Details() {
               whileHover={{ scale: 1.02 }}
               className={`group relative bg-[#004A1F] rounded-full px-8 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-colors hover:bg-[#005A2F]`}
             >
-              <div className="text-center text-[clamp(16px,2vw,28px)] uppercase leading-tight px-2">
+              <div className="text-center text-[clamp(16px,2vw,28px)] lg:text-[30px] uppercase leading-none tracking-wide px-2">
                 MUSIC PERFORMANCE BY: RYBEENA
               </div>
             </motion.div>
           </motion.div>
 
           {/* Activity Grid */}
-          <div className="grid grid-cols-2 gap-[2vh]">
+          <div className="grid grid-cols-2 gap-[2vh] lg:gap-[3vh]">
             {activities.map((act, i) => (
               <motion.div 
                 key={i} 
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 1.1 + (i * 0.1), ease: "easeOut" }}
+                transition={{ duration: 0.5, delay: 0.3 + (i * 0.1), ease: "easeOut" }}
               >
                 <motion.div
                   onMouseEnter={() => handleMouseEnter(act)}
@@ -165,7 +164,7 @@ export default function Details() {
                   whileHover={{ scale: 1.02 }}
                   className={`group relative ${act.bg} rounded-full px-4 cursor-pointer shadow-xl border-2 border-white/5 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-transform`}
                 >
-                  <div className="text-center text-[clamp(12px,1.4vw,20px)] uppercase leading-tight whitespace-pre-line px-1">
+                  <div className="text-center text-[clamp(12px,1.4vw,20px)] lg:text-[22px] uppercase leading-[1.1] tracking-normal whitespace-pre-line px-1">
                     {act.title}
                   </div>
                 </motion.div>
@@ -195,7 +194,6 @@ export default function Details() {
               }}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Background Decoration */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFF113]/10 rounded-full -mr-16 -mt-16 blur-2xl" />
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 rounded-full -ml-16 -mb-16 blur-2xl" />
 
