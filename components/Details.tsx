@@ -116,7 +116,7 @@ export default function Details({ marginClassName }: DetailsProps) {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="relative w-[80%] md:w-[75%] lg:w-[70%] max-w-[500px] aspect-[800/450] -mt-[14%] lg:-mt-[15%] mb-0 z-30"
+          className="relative w-[80%] md:w-[75%] lg:w-[70%] max-w-[500px] aspect-[800/450] -mt-[14%] lg:-mt-[12%] mb-0 z-30"
         >
           <div className="relative w-full h-full">
             <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" />
