@@ -32,7 +32,7 @@ export default function Home() {
         <Details marginClassName={SECTION_MARGIN} />
 
         {/* SECTION 3: TALENTS */}
-        <Talent />
+        <Talent marginClassName={SECTION_MARGIN} />
 
         {/* SECTION 4: CHICKEN ESSENCE */}
         <ChickenEssence />
