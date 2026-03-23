@@ -93,7 +93,7 @@ export default function Talent({ marginClassName }: TalentProps) {
               transition={{ duration: 0.6 }}
               className="w-full mb-8 md:mb-12 text-center"
             >
-              <h2 className="text-[#FFF113] text-[clamp(24px,5vw,60px)] leading-[0.9] drop-shadow-lg lowercase">
+              <h2 className="text-[#FFF113] text-[clamp(18px,4vw,48px)] leading-[0.9] drop-shadow-lg uppercase">
                 big names. bold talent.<br />non-stop vibes.
               </h2>
             </motion.div>
