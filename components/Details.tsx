@@ -86,7 +86,7 @@ export default function Details() {
         >
           <div className="relative w-full aspect-[1046/484]">
             <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-[8vw] pt-[2vh] pb-[3vh]">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-[6vw] pt-[2vh] pb-[3vh]">
               <motion.h2 
                 className="text-[#C10706] text-[clamp(18px,3.2vw,48px)] landscape:text-[clamp(18px,2.5vw,36px)] lg:text-[54px] font-lilita leading-[1.2] tracking-wide mt-[1.5vh]"
               >
@@ -106,13 +106,13 @@ export default function Details() {
           </div>
         </motion.div>
 
-        {/* Vector Venue Container - Reduced margin to raise capsules */}
+        {/* Vector Venue Container - Removed margin to raise capsules */}
         <motion.div 
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          className="relative w-full max-w-[420px] lg:max-w-[540px] -mt-[clamp(60px,10vw,140px)] lg:-mt-[130px] mb-[2vh] lg:mb-[3vh] z-30"
+          className="relative w-full max-w-[420px] lg:max-w-[540px] -mt-[clamp(60px,10vw,140px)] lg:-mt-[130px] mb-0 z-30"
         >
           <div className="relative w-full aspect-[800/450]">
             <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" />
@@ -127,8 +127,8 @@ export default function Details() {
           </div>
         </motion.div>
 
-        {/* Activities Section - Tightened spacing and slight negative margin */}
-        <div className="w-full max-w-[720px] space-y-[2vh] lg:space-y-[2vh] pb-0 lg:-mt-[2vh]">
+        {/* Activities Section - Balanced spacing */}
+        <div className="w-full max-w-[720px] space-y-[2vh] lg:space-y-[2vh] pb-0 -mt-[3vh] lg:-mt-[6vh]">
           {/* Rybeena Wide Capsule */}
           <motion.div 
             initial={{ y: 50, opacity: 0 }}
