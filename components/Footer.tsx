@@ -40,14 +40,14 @@ export default function Footer() {
                 <MapPin weight="regular" className="shrink-0 mt-0.5 w-3 h-3 md:w-6 md:h-6" />
                 <p className="leading-tight">Seedap Supreme Noodles Plot 4 - 6, Block 1, Industrial Opic Estate, Agbara, Ogun State.</p>
               </div>
-              <div className="flex items-center gap-1.5 md:gap-3">
+              <a href="mailto:info@sedaapsupremenoodles.ng" className="flex items-center gap-1.5 md:gap-3 hover:text-[#FFF113] transition-colors">
                 <Envelope weight="regular" className="shrink-0 w-3 h-3 md:w-6 md:h-6" />
                 <p>info@sedaapsupremenoodles.ng</p>
-              </div>
-              <div className="flex items-center gap-1.5 md:gap-3">
+              </a>
+              <a href="tel:09024707051" className="flex items-center gap-1.5 md:gap-3 hover:text-[#FFF113] transition-colors">
                 <Phone weight="regular" className="shrink-0 w-3 h-3 md:w-6 md:h-6" />
                 <p>0902 470 7051</p>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -57,11 +57,11 @@ export default function Footer() {
             <div className="flex flex-col items-end md:items-center">
               <h4 className="font-lilita text-[12px] md:text-2xl mb-2 md:mb-6 uppercase text-[#FFF113]">FOLLOW US</h4>
               <div className="flex flex-wrap justify-end md:justify-center gap-1.5 md:gap-4 mb-12">
-                <a href="Tiktok:https://www.tiktok.com/@supremenoodlesng?is_from_webapp=1&sender_device=pc" className="hover:opacity-80 transition-opacity"><TiktokLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="Instagram:https://www.instagram.com/supremenoodlesng/" className="hover:opacity-80 transition-opacity"><InstagramLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="Twitter:https://x.com/ssupremenoodles?s=21" className="hover:opacity-80 transition-opacity"><XLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="FacebooK:facebook.com/SupremeNoodlesNG" className="hover:opacity-80 transition-opacity"><FacebookLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="youtube:https://www.youtube.com/@SedaapSupremeNoodles" className="hover:opacity-80 transition-opacity"><YoutubeLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="https://www.tiktok.com/@supremenoodlesng?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity"><TiktokLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="https://www.instagram.com/supremenoodlesng/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity"><InstagramLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="https://x.com/ssupremenoodles?s=21" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity"><XLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="https://facebook.com/SupremeNoodlesNG" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity"><FacebookLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="https://www.youtube.com/@SedaapSupremeNoodles" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity"><YoutubeLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
               </div>
             </div>
           </div>
