@@ -2,15 +2,6 @@
 
 import nodemailer from "nodemailer";
 
-// Create the transporter once
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
 export async function registerUser(formData: { 
   firstName: string; 
   lastName: string; 
@@ -18,24 +9,33 @@ export async function registerUser(formData: {
   phone: string; 
   email: string; 
 }) {
-  console.log("Starting registration for:", formData.email);
+  console.log("--- New Registration Request ---");
+  console.log("Email:", formData.email);
+
+  // 1. Check if ENV variables exist (Log only existence, not values)
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error("❌ MISSING ENV VARIABLES: Please check Vercel Settings for EMAIL_USER and EMAIL_PASS");
+    return { success: false, error: "Server configuration error" };
+  }
 
   try {
-    // 1. Update Google Sheet FIRST and wait for it
-    const sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbyWpzgac7658loquzysSUrbmF8I9aTZiw3abl5ADhwK2w0ldSyCkhCll44y9QiuTn0KMw/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-      redirect: "follow",
+    // 2. Create a fresh transporter INSIDE the function for serverless reliability
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // Port 587 uses STARTTLS
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
-    if (sheetResponse.ok) {
-      console.log("Google Sheet updated successfully");
-    } else {
-      console.error("Google Sheet update failed:", await sheetResponse.text());
-    }
-
-    // 2. Attempt to send email via Nodemailer
+    // 3. Send Email FIRST (Sequential)
+    // We do this first because SMTP handshakes are the most likely to time out
+    console.log("Attempting to send email...");
     try {
       await transporter.sendMail({
         from: `"Real Essence Festival" <${process.env.EMAIL_USER}>`,
@@ -54,9 +54,29 @@ export async function registerUser(formData: {
           </div>
         `,
       });
-      console.log("Email sent successfully via Nodemailer");
+      console.log("✅ Email sent successfully");
     } catch (emailErr) {
-      console.error("Nodemailer service error:", emailErr);
+      console.error("❌ Email Failed:", emailErr);
+      // We continue even if email fails so we don't lose the lead in the sheet
+    }
+
+    // 4. Update Google Sheet (Sequential)
+    console.log("Attempting to update Google Sheet...");
+    try {
+      const sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbyWpzgac7658loquzysSUrbmF8I9aTZiw3abl5ADhwK2w0ldSyCkhCll44y9QiuTn0KMw/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+        redirect: "follow",
+      });
+
+      if (sheetResponse.ok) {
+        console.log("✅ Google Sheet updated successfully");
+      } else {
+        console.error("❌ Google Sheet update failed:", await sheetResponse.text());
+      }
+    } catch (sheetErr) {
+      console.error("❌ Google Sheet fetch error:", sheetErr);
     }
 
     return { success: true };
