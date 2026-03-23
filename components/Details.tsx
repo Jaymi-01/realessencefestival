@@ -33,9 +33,9 @@ export default function Details({ marginClassName }: DetailsProps) {
     { title: "GAMES", desc: "Exciting games and fun activities to keep the energy going all day long.", bg: "bg-[#C06014]" },
   ];
 
-  const rybeenaActivity: Activity = { 
-    title: "MUSIC PERFORMANCE BY: RYBEENA", 
-    desc: "Get ready for back-to-back energy with Rybeena, DJs, and other entertainers as we vibe through the festival.", 
+  const AyomaffActivity: Activity = { 
+    title: "MUSIC PERFORMANCE BY: Ayomaff", 
+    desc: "Get ready for back-to-back energy with Ayomaff, DJs, and other entertainers as we vibe through the festival.", 
     bg: "bg-[#004A1F]" 
   };
 
@@ -146,7 +146,7 @@ export default function Details({ marginClassName }: DetailsProps) {
           
           {/* Desktop/Tablet Layout (Hidden on Mobile) */}
           <div className="hidden md:block space-y-[2vh] lg:space-y-[2.5vh]">
-            {/* Rybeena Wide Capsule */}
+            {/* Ayomaff Wide Capsule */}
             <motion.div 
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -154,13 +154,13 @@ export default function Details({ marginClassName }: DetailsProps) {
               transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             >
               <motion.div
-                onMouseEnter={() => handleMouseEnter(rybeenaActivity)}
+                onMouseEnter={() => handleMouseEnter(AyomaffActivity)}
                 onMouseLeave={handleMouseLeave}
                 whileHover={{ scale: 1.02 }}
                 className={`group relative bg-[#004A1F] rounded-full px-6 md:px-8 cursor-pointer shadow-xl border-2 border-white/20 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-colors hover:bg-[#005A2F]`}
               >
                 <div className="text-center text-[clamp(14px,2vw,24px)] lg:text-[clamp(16px,2.2vw,28px)] uppercase leading-none tracking-wide">
-                  MUSIC PERFORMANCE BY: RYBEENA
+                  MUSIC PERFORMANCE BY: Ayomaff
                 </div>
               </motion.div>
             </motion.div>
@@ -192,7 +192,7 @@ export default function Details({ marginClassName }: DetailsProps) {
 
           {/* Mobile Layout (Preset Version - Visible only on Mobile) */}
           <div className="md:hidden space-y-3">
-            {/* Rybeena Card (Full Width) */}
+            {/* Ayomaff Card (Full Width) */}
             <motion.div 
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -200,10 +200,10 @@ export default function Details({ marginClassName }: DetailsProps) {
               className="bg-[#004A1F] rounded-[1.5rem] p-4 border-2 border-white/20 shadow-lg text-center"
             >
               <h3 className="text-[18px] text-[#FFF113] mb-1 uppercase leading-tight">
-                {rybeenaActivity.title}
+                {AyomaffActivity.title}
               </h3>
               <p className="text-[12px] font-sans text-white/90 leading-normal">
-                {rybeenaActivity.desc}
+                {AyomaffActivity.desc}
               </p>
             </motion.div>
 
