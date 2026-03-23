@@ -57,13 +57,13 @@ export default function Details({ marginClassName }: DetailsProps) {
         />
       </div>
 
-      {/* Side Plates - Scaled for desktop responsiveness */}
+      {/* Side Plates - Scaled for tablet and desktop responsiveness */}
       <motion.div 
         initial={{ x: -150, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="absolute left-0 top-[45%] -translate-y-1/2 w-[clamp(300px,32vw,750px)] aspect-[0.7/1] z-10 pointer-events-none hidden lg:block"
+        className="absolute left-0 top-[45%] -translate-y-1/2 w-[clamp(200px,28vw,450px)] lg:w-[clamp(300px,32vw,750px)] aspect-[0.7/1] z-10 pointer-events-none hidden md:block"
       >
         <Image src="/assets/plate-left.png" alt="" fill className="object-contain object-left" priority />
       </motion.div>
@@ -72,13 +72,13 @@ export default function Details({ marginClassName }: DetailsProps) {
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="absolute right-0 top-[45%] -translate-y-1/2 w-[clamp(300px,32vw,750px)] aspect-[0.7/1] z-10 pointer-events-none hidden lg:block"
+        className="absolute right-0 top-[45%] -translate-y-1/2 w-[clamp(200px,28vw,450px)] lg:w-[clamp(300px,32vw,750px)] aspect-[0.7/1] z-10 pointer-events-none hidden md:block"
       >
         <Image src="/assets/plate-right.png" alt="" fill className="object-contain object-right" priority />
       </motion.div>
 
       {/* Main Container - Using marginClassName for consistency */}
-      <div className={`relative z-20 w-full max-w-[1440px] mx-auto ${marginClassName || "px-6 md:px-[8vw] lg:px-[10vw]"} flex flex-col items-center`}>
+      <div className={`relative z-20 w-full max-w-[1440px] mx-auto ${marginClassName || "px-6 md:px-[6vw] lg:px-[10vw]"} flex flex-col items-center`}>
         
         {/* Vector Date Container */}
         <motion.div 
@@ -86,23 +86,23 @@ export default function Details({ marginClassName }: DetailsProps) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative w-full max-w-[clamp(320px,90%,760px)] -mt-[2vh] lg:-mt-[4vh] mb-0 z-20"
+          className="relative w-full max-w-[clamp(320px,95%,850px)] lg:max-w-[clamp(320px,90%,760px)] -mt-[2vh] md:-mt-[3vh] lg:-mt-[4vh] mb-0 z-20"
         >
           <div className="relative w-full aspect-[1046/484]">
             <Image src="/assets/Vector-date.svg" alt="Date" fill className="object-contain drop-shadow-2xl" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-[6%] pt-[4%] pb-[6%]">
               <motion.h2 
-                className="text-[#C10706] text-[clamp(20px,4.2vw,54px)] font-lilita leading-tight tracking-tight"
+                className="text-[#C10706] text-[clamp(18px,4vw,42px)] lg:text-[clamp(20px,4.2vw,54px)] font-lilita leading-tight tracking-tight"
               >
                 APRIL 5TH-6TH, 2026
               </motion.h2>
               <motion.p 
-                className="text-[#004700] text-[clamp(14px,2.6vw,38px)] mt-0 font-lilita capitalize leading-tight"
+                className="text-[#004700] text-[clamp(12px,2.4vw,30px)] lg:text-[clamp(14px,2.6vw,38px)] mt-0 font-lilita capitalize leading-tight"
               >
                 A Day Packed with Real Enjoyment
               </motion.p>
               <motion.p 
-                className="text-black text-[clamp(11px,1.4vw,18px)] mt-[2%] font-sans capitalize leading-relaxed max-w-[90%] mx-auto"
+                className="text-black text-[clamp(10px,1.3vw,16px)] lg:text-[clamp(11px,1.4vw,18px)] mt-[2%] font-sans capitalize leading-relaxed max-w-[92%] lg:max-w-[90%] mx-auto"
               >
                 <span className="font-semibold text-black/80">The Real Essence Festival</span> is designed to deliver unforgettable moments. From tasting delicious meals to dancing to great music and participating in exciting games, every corner of the festival is filled with energy, flavor, and fun.
               </motion.p>
@@ -116,15 +116,15 @@ export default function Details({ marginClassName }: DetailsProps) {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="relative w-[70%] max-w-[500px] aspect-[800/450] -mt-[12%] lg:-mt-[15%] mb-0 z-30"
+          className="relative w-[80%] md:w-[75%] lg:w-[70%] max-w-[500px] aspect-[800/450] -mt-[14%] lg:-mt-[15%] mb-0 z-30"
         >
           <div className="relative w-full h-full">
             <Image src="/assets/Vector-venue.svg" alt="Venue" fill className="object-contain drop-shadow-xl" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-[10%] pt-[4%] gap-[1%]">
-              <p className="text-[#FFF113] text-[clamp(15px,2.2vw,30px)] flex items-center gap-3 leading-none uppercase tracking-wider">
+              <p className="text-[#FFF113] text-[clamp(14px,2vw,26px)] lg:text-[clamp(15px,2.2vw,30px)] flex items-center gap-2 md:gap-3 leading-none uppercase tracking-wider">
                 <span className="text-white">VENUE:</span> IKEJA CITY MALL
               </p>
-              <p className="text-[#FFF113] text-[clamp(15px,2.2vw,30px)] leading-none uppercase tracking-wider">
+              <p className="text-[#FFF113] text-[clamp(14px,2vw,26px)] lg:text-[clamp(15px,2.2vw,30px)] leading-none uppercase tracking-wider">
                 <span className="text-white">TIME:</span> 10AM
               </p>
             </div>
@@ -132,7 +132,7 @@ export default function Details({ marginClassName }: DetailsProps) {
         </motion.div>
 
         {/* Activities Section */}
-        <div className="w-full max-w-[760px] space-y-[2vh] lg:space-y-[2.5vh] pb-0 -mt-[4vh] lg:-mt-[6vh]">
+        <div className="w-full max-w-[760px] space-y-[2vh] lg:space-y-[2.5vh] pb-0 -mt-[6vh] md:-mt-[5vh] lg:-mt-[6vh]">
           {/* Rybeena Wide Capsule */}
           <motion.div 
             initial={{ y: 30, opacity: 0 }}
@@ -144,9 +144,9 @@ export default function Details({ marginClassName }: DetailsProps) {
               onMouseEnter={() => handleMouseEnter(rybeenaActivity)}
               onMouseLeave={handleMouseLeave}
               whileHover={{ scale: 1.02 }}
-              className={`group relative bg-[#004A1F] rounded-full px-8 cursor-pointer shadow-xl border-2 border-white/20 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-colors hover:bg-[#005A2F]`}
+              className={`group relative bg-[#004A1F] rounded-full px-6 md:px-8 cursor-pointer shadow-xl border-2 border-white/20 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-colors hover:bg-[#005A2F]`}
             >
-              <div className="text-center text-[clamp(16px,2.2vw,28px)] uppercase leading-none tracking-wide">
+              <div className="text-center text-[clamp(14px,2vw,24px)] lg:text-[clamp(16px,2.2vw,28px)] uppercase leading-none tracking-wide">
                 MUSIC PERFORMANCE BY: RYBEENA
               </div>
             </motion.div>
@@ -166,9 +166,9 @@ export default function Details({ marginClassName }: DetailsProps) {
                   onMouseEnter={() => handleMouseEnter(act)}
                   onMouseLeave={handleMouseLeave}
                   whileHover={{ scale: 1.02 }}
-                  className={`group relative ${act.bg} rounded-full px-4 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-all`}
+                  className={`group relative ${act.bg} rounded-full px-3 md:px-4 cursor-pointer shadow-xl border-2 border-white/10 overflow-hidden ${CAPSULE_HEIGHT} flex items-center justify-center w-full transition-all`}
                 >
-                  <div className="text-center text-[clamp(12px,1.5vw,22px)] uppercase leading-tight whitespace-pre-line px-1">
+                  <div className="text-center text-[clamp(11px,1.4vw,18px)] lg:text-[clamp(12px,1.5vw,22px)] uppercase leading-tight whitespace-pre-line px-1">
                     {act.title}
                   </div>
                 </motion.div>
