@@ -57,11 +57,11 @@ export default function Footer() {
             <div className="flex flex-col items-end md:items-center">
               <h4 className="font-lilita text-[12px] md:text-2xl mb-2 md:mb-6 uppercase text-[#FFF113]">FOLLOW US</h4>
               <div className="flex flex-wrap justify-end md:justify-center gap-1.5 md:gap-4 mb-12">
-                <a href="#" className="hover:opacity-80 transition-opacity"><TiktokLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="#" className="hover:opacity-80 transition-opacity"><InstagramLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="#" className="hover:opacity-80 transition-opacity"><XLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="#" className="hover:opacity-80 transition-opacity"><FacebookLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
-                <a href="#" className="hover:opacity-80 transition-opacity"><YoutubeLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="Tiktok:https://www.tiktok.com/@supremenoodlesng?is_from_webapp=1&sender_device=pc" className="hover:opacity-80 transition-opacity"><TiktokLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="Instagram:https://www.instagram.com/supremenoodlesng/" className="hover:opacity-80 transition-opacity"><InstagramLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="Twitter:https://x.com/ssupremenoodles?s=21" className="hover:opacity-80 transition-opacity"><XLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="FacebooK:facebook.com/SupremeNoodlesNG" className="hover:opacity-80 transition-opacity"><FacebookLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
+                <a href="youtube:https://www.youtube.com/@SedaapSupremeNoodles" className="hover:opacity-80 transition-opacity"><YoutubeLogo weight="regular" className="w-4 h-4 md:w-8 md:h-8" /></a>
               </div>
             </div>
           </div>
