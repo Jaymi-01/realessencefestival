@@ -109,7 +109,7 @@ export default function Details({ marginClassName }: DetailsProps) {
               <motion.p 
                 className="text-[#004700] text-[clamp(12px,2.4vw,30px)] lg:text-[clamp(14px,2.6vw,38px)] mt-0 font-lilita capitalize leading-tight"
               >
-                A Day Packed with Real Enjoyment
+                Two Days Packed with Real Enjoyment
               </motion.p>
               <motion.p 
                 className="text-black text-[clamp(10px,1.3vw,16px)] lg:text-[clamp(11px,1.4vw,18px)] mt-[2%] font-sans capitalize leading-relaxed max-w-[92%] lg:max-w-[90%] mx-auto"
