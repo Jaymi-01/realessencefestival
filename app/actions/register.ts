@@ -46,7 +46,7 @@ export async function registerUser(formData: {
             <h1 style="color: #B11217; text-align: center;">Welcome to the Real Essence Festival!</h1>
             <p>Hi ${formData.firstName},</p>
             <p>You have successfully registered for the first-ever <strong>Real Essence Festival by Sedaap Supreme Noodles</strong>!</p>
-            <p>We are so excited to have you join us for a day packed with real fun, real vibes, and real essence. Get ready for an unforgettable fusion of food, music, and culture.</p>
+            <p>We are so excited to have you join us for a two days packed event with real fun, real vibes, and real essence. Get ready for an unforgettable fusion of food, music, and culture.</p>
             <div style="background-color: #FFF113; padding: 15px; border-radius: 5px; text-align: center; margin: 20px 0;">
               <p style="margin: 0; font-weight: bold; color: #000;">SEE YOU ON APRIL 5TH–6TH, 2026!</p>
             </div>
