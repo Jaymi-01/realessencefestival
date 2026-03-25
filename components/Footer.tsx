@@ -9,9 +9,10 @@ import {
   YoutubeLogo, 
   MapPin, 
   Envelope, 
-  Phone,
+  Chats,
   CaretUp
 } from "@phosphor-icons/react";
+import { Chat } from "@phosphor-icons/react/dist/ssr";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -44,9 +45,9 @@ export default function Footer() {
                 <Envelope weight="regular" className="shrink-0 w-3 h-3 md:w-6 md:h-6" />
                 <p>info@sedaapsupremenoodles.ng</p>
               </a>
-              <a href="tel:09024707051" className="flex items-center gap-1.5 md:gap-3 hover:text-[#FFF113] transition-colors">
-                <Phone weight="regular" className="shrink-0 w-3 h-3 md:w-6 md:h-6" />
-                <p>0902 470 7051</p>
+              <a href="#" className="flex items-center gap-1.5 md:gap-3 hover:text-[#FFF113] transition-colors">
+                <Chats weight="regular" className="shrink-0 w-3 h-3 md:w-6 md:h-6" />
+                <p>For more enquiries, send a DM on our social media platforms</p>
               </a>
             </div>
           </div>

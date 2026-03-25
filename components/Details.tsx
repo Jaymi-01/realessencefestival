@@ -27,7 +27,7 @@ export default function Details({ marginClassName }: DetailsProps) {
   }, []);
 
   const activities: Activity[] = [
-    { title: "SUPREME COOKING\nCOMPETITION", desc: "Bring your A-game, showcase your cooking skills, and win big with our culinary challenge.", bg: "bg-[#B11217]" },
+    { title: "COOKING COMPETITION", desc: "Bring your A-game, showcase your cooking skills, and win big with our culinary challenge.", bg: "bg-[#B11217]" },
     { title: "MASTERCLASS", desc: "Tap into knowledge from the best minds in the game and elevate your skills.", bg: "bg-[#0000B1]" },
     { title: "DANCE COMPETITION", desc: "Dance your way to the spotlight, and win amazing prizes in our high-energy face-off.", bg: "bg-[#FF6B6B]" },
     { title: "GAMES", desc: "Exciting games and fun activities to keep the energy going all day long.", bg: "bg-[#C06014]" },
@@ -114,7 +114,7 @@ export default function Details({ marginClassName }: DetailsProps) {
               <motion.p 
                 className="text-black text-[clamp(10px,1.3vw,16px)] lg:text-[clamp(11px,1.4vw,18px)] mt-[2%] font-sans capitalize leading-relaxed max-w-[92%] lg:max-w-[90%] mx-auto"
               >
-                <span className="font-semibold text-black/80">The Real Essence Festival</span> is designed to deliver unforgettable moments. From tasting delicious meals to dancing to great music and participating in exciting games, every corner of the festival is filled with energy, flavor, and fun.
+                <span className="font-semibold text-black/80">The Real Essence Festival</span> is designed to deliver unforgettable moments. From savouring delicious meals to dancing to great music and engaging in exciting games, every corner of the festival is filled with energy, flavor, and fun.
               </motion.p>
             </div>
           </div>

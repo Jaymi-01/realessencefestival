@@ -26,12 +26,12 @@ export default function Talent({ marginClassName }: TalentProps) {
       desc: "Omoye Isabota (OmoyeCooks) is a Nigerian chef and food creator who will host the masterclass and serve as a competition judge."
     },
     { 
-      name: "ifyskitchen", 
+      name: "ify's kitchen", 
       role: "Judge", 
       image: "/assets/ify 1.png", 
       bg: "/assets/ify-background.png",
       color: "#0906C1",
-      desc: "IfysKitchen is a Nigerian food storyteller and creator known for sharing simple, flavorful African recipes that celebrate culture and inspire home cooks."
+      desc: "Ify's Kitchen is a Nigerian food storyteller and creator known for sharing simple, flavorful African recipes that celebrate culture and inspire home cooks."
     },
     { 
       name: "simi od", 
@@ -39,7 +39,7 @@ export default function Talent({ marginClassName }: TalentProps) {
       image: "/assets/Simi 1.png", 
       bg: "/assets/simi-background.png",
       color: "#004700",
-      desc: "simi_od is a Nigerian content creator known for relatable lifestyle and food mini-vlogs with an authentic, engaging style."
+      desc: "Simi_od is a Nigerian content creator known for relatable lifestyle and food mini-vlogs with an authentic, engaging style."
     },
     { 
       name: "chef pobs", 
@@ -55,7 +55,7 @@ export default function Talent({ marginClassName }: TalentProps) {
       image: "/assets/Chike 1.png", 
       bg: "/assets/chike-background.png",
       color: "#0906C1",
-      desc: "chikethecreator is a Nigerian content creator known for engaging, creative storytelling."
+      desc: "chike the creator is a Nigerian content creator known for engaging, creative storytelling."
     },
   ];
 
@@ -141,7 +141,7 @@ export default function Talent({ marginClassName }: TalentProps) {
                         <p className="text-[clamp(6px,0.8vw,11px)] text-black uppercase font-bold leading-none mb-0.5 md:mb-1">
                           {celeb.role}
                         </p>
-                        <p className="text-[clamp(7px,1vw,12px)] text-black/80 leading-tight font-sans lowercase max-w-[95%] mx-auto">
+                        <p className="text-[clamp(7px,1vw,12px)] text-black/80 leading-tight font-sans max-w-[95%] mx-auto">
                           {celeb.desc}
                         </p>
                       </div>
