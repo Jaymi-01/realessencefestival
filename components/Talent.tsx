@@ -78,11 +78,11 @@ export default function Talent({ marginClassName }: TalentProps) {
       }}
     >
       {/* Intersect Borders - Adjusted for mobile overlap */}
-      <div className="absolute top-0 bottom-0 -left-[60px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-bottom" />
+      <div className="absolute inset-y-0 -left-[60px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+        <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
       </div>
-      <div className="absolute top-0 bottom-0 -right-[60px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-bottom" />
+      <div className="absolute inset-y-0 -right-[60px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
+        <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
       </div>
 
       {/* Main Container */}
