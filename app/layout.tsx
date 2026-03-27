@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, JetBrains_Mono, Lilita_One } from "next/font/google"
 import { Toaster } from "sonner";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import ChallengeModal from "@/components/ChallengeModal";
 
 const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
 const lilitaOne = Lilita_One({ weight: '400', subsets: ['latin'], variable: '--font-lilita' });
@@ -37,6 +38,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {children}
+        <ChallengeModal />
         <Toaster position="top-center" richColors />
       </body>
     </html>
