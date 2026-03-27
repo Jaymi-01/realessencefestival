@@ -33,8 +33,8 @@ export default function ChallengeModal() {
         }}
       >
         <div className="relative z-10 flex flex-col items-center justify-center w-full">
-          <span className="text-[8px] md:text-[9px] lg:text-[9px] block mb-0.5">SIZZLE YOUR WAY TO</span>
-          <span className="text-[11px] md:text-[14px] lg:text-[13px] block leading-tight">1 MILLION NAIRA</span>
+          <span className="text-[5px] md:text-[9px] lg:text-[9px] block mb-0.5">SIZZLE YOUR WAY TO</span>
+          <span className="text-[8px] md:text-[11px] lg:text-[13px] block leading-tight">1 MILLION NAIRA</span>
         </div>
       </motion.button>
 
