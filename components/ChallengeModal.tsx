@@ -25,14 +25,17 @@ export default function ChallengeModal() {
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-[100] w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full shadow-2xl flex items-center justify-center text-center p-2 font-lilita leading-tight text-[8px] md:text-[10px] lg:text-[11px] transition-colors duration-500 overflow-hidden"
+        className="fixed bottom-6 right-6 z-[100] w-16 h-16 md:w-22 md:h-22 lg:w-26 lg:h-26 rounded-full shadow-2xl flex items-center justify-center text-center p-3 font-lilita leading-none transition-colors duration-500 overflow-hidden"
         style={{
           background: "radial-gradient(circle, #027402 0%, #002C00 100%)",
           color: isYellow ? "#FFF113" : "#FFFFFF",
           border: "2px solid #FFF113"
         }}
       >
-        <span className="relative z-10">HOW TO<br/>ENTER</span>
+        <div className="relative z-10 flex flex-col items-center justify-center w-full">
+          <span className="text-[8px] md:text-[9px] lg:text-[9px] block mb-0.5">SIZZLE YOUR WAY TO</span>
+          <span className="text-[11px] md:text-[14px] lg:text-[13px] block leading-tight">1 MILLION NAIRA</span>
+        </div>
       </motion.button>
 
       {/* Modal Overlay */}
