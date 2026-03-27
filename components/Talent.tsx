@@ -250,7 +250,7 @@ export default function Talent({ marginClassName }: TalentProps) {
               src="/assets/MASCOT 1.png"
               alt="Mascot"
               fill
-              className="object-contain object-bottom drop-shadow-2xl"
+              className="object-contain object-center drop-shadow-2xl"
             />
           </motion.div>
 
