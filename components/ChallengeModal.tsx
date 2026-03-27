@@ -25,7 +25,7 @@ export default function ChallengeModal() {
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-[100] w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl flex items-center justify-center text-center p-2 font-lilita leading-tight text-[9px] md:text-[11px] transition-colors duration-500 overflow-hidden"
+        className="fixed bottom-6 right-6 z-[100] w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full shadow-2xl flex items-center justify-center text-center p-2 font-lilita leading-tight text-[8px] md:text-[10px] lg:text-[11px] transition-colors duration-500 overflow-hidden"
         style={{
           background: "radial-gradient(circle, #027402 0%, #002C00 100%)",
           color: isYellow ? "#FFF113" : "#FFFFFF",
@@ -51,7 +51,7 @@ export default function ChallengeModal() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="relative w-full max-w-[450px] aspect-square flex flex-col items-center text-center"
+              className="relative w-full max-w-[340px] md:max-w-[450px] lg:max-w-[550px] aspect-square flex flex-col items-center text-center"
             >
               {/* Modal Background Image - The actual wavy asset */}
               <div className="absolute inset-0 z-0">
@@ -65,45 +65,38 @@ export default function ChallengeModal() {
               </div>
 
               {/* Text Content - Centered within the wavy image area */}
-              <div className="relative z-10 w-[80%] h-full flex flex-col items-center justify-center gap-2 md:gap-3 py-12">
-                <h2 className="text-[#C10706] font-lilita text-lg md:text-2xl uppercase leading-none mb-2">
+              <div className="relative z-10 w-[85%] h-full flex flex-col items-center justify-center gap-1.5 md:gap-3 lg:gap-4 py-8 md:py-12">
+                <h2 className="text-[#C10706] font-lilita text-base md:text-2xl lg:text-3xl uppercase leading-none mb-1 md:mb-2">
                   HOW TO ENTER THE<br />CHALLENGE
                 </h2>
                 
-                <div className="space-y-1.5 md:space-y-2 text-[#000000] text-[10px] md:text-[13px] font-normal leading-tight">
+                <div className="space-y-1 md:space-y-2 lg:space-y-3 text-[#000000] text-[9px] md:text-[13px] lg:text-[16px] font-normal leading-tight">
                   <p>
-                    1. Create a video of your most creative<br />
+                    1. Create a video of your most creative<br className="hidden md:block" />
                     Sedaap Supreme Noodles dish
                   </p>
                   
                   <p>
-                    2. Post & Tag our official social page<br />
+                    2. Post & Tag our official social page<br className="hidden md:block" />
                     using the hashtag<br />
                     #SedaapSupremeNoodlesReceipeChallenge
                   </p>
                   
                   <p>
-                    3. Selection will be based on creativity,<br />
+                    3. Selection will be based on creativity,<br className="hidden md:block" />
                     engagement and presentation.
                   </p>
                   
                   <p>
-                    4. Final 4 selected participants will<br />
+                    4. Final 4 selected participants will<br className="hidden md:block" />
                     compete at the festival event.
                   </p>
                   
-                  <p className="text-[9px] md:text-[11px] opacity-80 mt-1">
-                    5. Vip, backstage access and regular passes<br />
+                  <p className="text-[8px] md:text-[11px] lg:text-[13px] opacity-80 mt-1">
+                    5. Vip, backstage access and regular passes<br className="hidden md:block" />
                     will be given to standout participants.
                   </p>
                 </div>
-
-                <button 
-                  onClick={() => setIsOpen(false)}
-                  className="bg-[#027402] text-white font-lilita py-1.5 px-6 rounded-full hover:bg-[#004700] transition-colors uppercase text-[10px] md:text-xs shadow-md mt-2"
-                >
-                  Got it!
-                </button>
               </div>
             </motion.div>
           </div>
