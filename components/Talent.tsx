@@ -92,17 +92,17 @@ export default function Talent({ marginClassName }: TalentProps) {
       name: "YOUR FOOD GIRL",
       role: "Judge",
       image: "/assets/Yourfoodgirl.png",
-      bg: "/assets/Omoye-background.png",
+      bg: "/assets/ify-background.png",
       color: "#C10706",
       desc: "Cynthia Salami is a digital creator and Nigerian food advocate, showcasing West African cuisine and bringing Nigeria's bold flavors to a global audience.",
     },
     {
-      name: "ify's kitchen",
+      name: "Omoye",
       role: "Judge",
-      image: "/assets/ify 1.png",
-      bg: "/assets/ify-background.png",
+      image: "/assets/Omoye Cooks.png",
+      bg: "/assets/Omoye-background.png",
       color: "#0906C1",
-      desc: "Ify's Kitchen is a Nigerian food storyteller and creator known for sharing simple, flavorful African recipes that celebrate culture and inspire home cooks.",
+      desc: "Omoye Isabota (OmoyeCooks) is a a Nigerian chef and food creator who will host the masterclass and serve as a competition judge.",
     },
     {
       name: "simi od",
@@ -152,24 +152,56 @@ export default function Talent({ marginClassName }: TalentProps) {
       }}
     >
       {/* Intersect Borders - Pseudo Background */}
-      <div 
-        className="absolute top-0 bottom-0 left-0 md:-left-8 w-[35px] md:w-[69px] z-0 pointer-events-none"
-        style={{ 
-          backgroundImage: 'url("/assets/Intersect-left.svg")',
-          backgroundRepeat: 'repeat-y',
-          backgroundSize: '100% 600px',
-          backgroundPosition: 'center'
-        }}
-      />
-      <div 
-        className="absolute top-0 bottom-0 right-0 md:-right-8 w-[35px] md:w-[69px] z-0 pointer-events-none"
-        style={{ 
-          backgroundImage: 'url("/assets/Intersect-right.svg")',
-          backgroundRepeat: 'repeat-y',
-          backgroundSize: '100% 600px',
-          backgroundPosition: 'center'
-        }}
-      />
+      <div className="absolute top-0 bottom-0 left-0 md:-left-8 w-[35px] md:w-[69px] z-0 pointer-events-none">
+        {/* Mobile: Repeating Ridges */}
+        <div 
+          className="md:hidden absolute inset-0"
+          style={{ 
+            backgroundImage: 'url("/assets/Intersect-left.svg")',
+            backgroundRepeat: 'repeat-y',
+            backgroundSize: '100% 600px',
+            backgroundPosition: 'center'
+          }}
+        />
+        {/* Tablet: Stacked Ridges (Balanced density and roundness) */}
+        <div className="hidden md:flex lg:hidden absolute inset-0 flex-col">
+          <div className="relative flex-1 [mask-image:linear-gradient(to_bottom,black_80%,transparent)]">
+            <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
+          </div>
+          <div className="relative flex-1 -mt-32">
+            <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-bottom" />
+          </div>
+        </div>
+        {/* Desktop: Standard Ridges */}
+        <div className="hidden lg:block absolute inset-0">
+          <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
+        </div>
+      </div>
+      <div className="absolute top-0 bottom-0 right-0 md:-right-8 w-[35px] md:w-[69px] z-0 pointer-events-none">
+        {/* Mobile: Repeating Ridges */}
+        <div 
+          className="md:hidden absolute inset-0"
+          style={{ 
+            backgroundImage: 'url("/assets/Intersect-right.svg")',
+            backgroundRepeat: 'repeat-y',
+            backgroundSize: '100% 600px',
+            backgroundPosition: 'center'
+          }}
+        />
+        {/* Tablet: Stacked Ridges (Balanced density and roundness) */}
+        <div className="hidden md:flex lg:hidden absolute inset-0 flex-col">
+          <div className="relative flex-1">
+            <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
+          </div>
+          <div className="relative flex-1 -mt-32">
+            <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-bottom" />
+          </div>
+        </div>
+        {/* Desktop: Standard Ridges */}
+        <div className="hidden lg:block absolute inset-0">
+          <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
+        </div>
+      </div>
 
       {/* Main Container */}
       <div className={`max-w-[1536px] mx-auto w-full relative z-20 flex flex-col px-6 md:px-8 lg:px-12 ${marginClassName ?? ""}`}>

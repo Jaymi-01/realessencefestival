@@ -13,12 +13,57 @@ export default function ChickenEssence() {
         backgroundPosition: 'center',
       }}
     >
-      {/* Intersect Borders */}
-      <div className="absolute top-0 bottom-0 -left-[60px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-left-2.svg" alt="" fill className="object-cover object-top" />
+      {/* Intersect Borders - Pseudo Background */}
+      <div className="absolute top-0 bottom-0 left-0 md:-left-8 w-[35px] md:w-[69px] z-0 pointer-events-none">
+        {/* Mobile: Repeating Ridges */}
+        <div 
+          className="md:hidden absolute inset-0"
+          style={{ 
+            backgroundImage: 'url("/assets/Intersect-left-2.svg")',
+            backgroundRepeat: 'repeat-y',
+            backgroundSize: '100% 600px',
+            backgroundPosition: 'center'
+          }}
+        />
+        {/* Tablet: Stacked Ridges (Balanced density and roundness) */}
+        <div className="hidden md:flex lg:hidden absolute inset-0 flex-col">
+          <div className="relative flex-1 [mask-image:linear-gradient(to_bottom,black_80%,transparent)]">
+            <Image src="/assets/Intersect-left-2.svg" alt="" fill className="object-cover object-top" />
+          </div>
+          <div className="relative flex-1 -mt-32">
+            <Image src="/assets/Intersect-left-2.svg" alt="" fill className="object-cover object-bottom" />
+          </div>
+        </div>
+        {/* Desktop: Standard Ridges */}
+        <div className="hidden lg:block absolute inset-0">
+          <Image src="/assets/Intersect-left-2.svg" alt="" fill className="object-cover object-top" />
+        </div>
       </div>
-      <div className="absolute top-0 bottom-0 -right-[60px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-right-2.svg" alt="" fill className="object-cover object-top" />
+
+      <div className="absolute top-0 bottom-0 right-0 md:-right-8 w-[35px] md:w-[69px] z-0 pointer-events-none">
+        {/* Mobile: Repeating Ridges */}
+        <div 
+          className="md:hidden absolute inset-0"
+          style={{ 
+            backgroundImage: 'url("/assets/Intersect-right-2.svg")',
+            backgroundRepeat: 'repeat-y',
+            backgroundSize: '100% 600px',
+            backgroundPosition: 'center'
+          }}
+        />
+        {/* Tablet: Stacked Ridges (Balanced density and roundness) */}
+        <div className="hidden md:flex lg:hidden absolute inset-0 flex-col">
+          <div className="relative flex-1 [mask-image:linear-gradient(to_bottom,black_80%,transparent)]">
+            <Image src="/assets/Intersect-right-2.svg" alt="" fill className="object-cover object-top" />
+          </div>
+          <div className="relative flex-1 -mt-32">
+            <Image src="/assets/Intersect-right-2.svg" alt="" fill className="object-cover object-bottom" />
+          </div>
+        </div>
+        {/* Desktop: Standard Ridges */}
+        <div className="hidden lg:block absolute inset-0">
+          <Image src="/assets/Intersect-right-2.svg" alt="" fill className="object-cover object-top" />
+        </div>
       </div>
 
       <div className="w-full relative z-20 flex flex-col items-center">
