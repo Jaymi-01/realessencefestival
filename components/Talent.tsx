@@ -40,24 +40,24 @@ const CelebCard = ({ celeb, i }: { celeb: Celebrity; i: number }) => (
     </div>
 
     {/* Name Blob */}
-    <div className="relative -mt-[48%] md:-mt-[40%] lg:-mt-[40%] w-[125%] md:w-[115%] h-auto min-h-[clamp(120px,35vw,220px)] flex flex-col items-center justify-center z-20 py-4 md:py-[clamp(20px,2vw,40px)]">
+    <div className="relative -mt-[48%] md:-mt-[40%] lg:-mt-[40%] w-full md:w-[105%] h-auto min-h-[clamp(120px,35vw,220px)] flex flex-col items-center justify-center z-20 py-4 md:py-[clamp(20px,2vw,40px)]">
       <div className="absolute inset-0 z-0">
         <Image src="/assets/Mask group.png" alt="" fill className="w-full h-full" />
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center text-center w-full">
         <div className="px-[12%] md:px-[18%] w-full mb-0.5 md:mb-1">
           <h3
-            className="text-[clamp(11px,3vw,18px)] uppercase leading-[1] font-lilita"
+            className="text-[clamp(11px,3vw,19px)] uppercase leading-[1] font-lilita"
             style={{ color: celeb.color }}
           >
             {celeb.name}
           </h3>
         </div>
         <div className="px-[8%] md:px-[12%] w-full">
-          <p className="text-[clamp(7px,1.5vw,10px)] text-black uppercase font-bold leading-none mb-0.5 md:mb-1">
+          <p className="text-[clamp(7px,1.5vw,11px)] text-black uppercase font-bold leading-none mb-0.5 md:mb-1">
             {celeb.role}
           </p>
-          <p className="text-[clamp(8px,2vw,11px)] text-black/80 leading-tight font-sans max-w-[92%] mx-auto">
+          <p className="text-[clamp(8px,2vw,13px)] text-black/80 leading-tight font-sans max-w-[92%] mx-auto">
             {celeb.desc}
           </p>
         </div>
@@ -138,8 +138,8 @@ export default function Talent({ marginClassName }: TalentProps) {
     },
   ];
 
-  const topRow = celebrities.slice(0, 2);
-  const bottomRow = celebrities.slice(2);
+  const topRow = celebrities.slice(0, 3);
+  const bottomRow = celebrities.slice(3);
 
   return (
     <section
@@ -160,11 +160,11 @@ export default function Talent({ marginClassName }: TalentProps) {
       </div>
 
       {/* Main Container */}
-      <div className={`max-w-[1440px] mx-auto w-full relative z-20 flex flex-col px-10 md:px-[6vw] lg:px-[10vw] ${marginClassName ?? ""}`}>
-        <div className="flex flex-col md:flex-row items-stretch w-full gap-8">
+      <div className={`max-w-[1536px] mx-auto w-full relative z-20 flex flex-col px-6 md:px-8 lg:px-12 ${marginClassName ?? ""}`}>
+        <div className="flex flex-col md:flex-row items-stretch w-full gap-4 md:gap-8">
 
           {/* Right side: Header + Grid */}
-          <div className="flex-1 min-w-0 flex flex-col order-1 md:order-2 lg:flex-[4]">
+          <div className="flex-1 min-w-0 flex flex-col order-1 md:order-2 lg:flex-[5]">
             {/* Header */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
@@ -178,17 +178,18 @@ export default function Talent({ marginClassName }: TalentProps) {
               </h2>
             </motion.div>
 
-            {/* Top row: 2 celebrities */}
-            <div className="grid grid-cols-2 gap-x-4 md:gap-x-8 lg:gap-x-12 gap-y-4 md:gap-y-12 mb-4 md:mb-12">
-              {topRow.map((celeb, i) => (
-                <CelebCard key={celeb.name} celeb={celeb} i={i} />
-              ))}
-            </div>
-
-            {/* Bottom row: 5 celebrities — 2-2-1 on mobile, 3 cols on desktop */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-8 lg:gap-x-12 gap-y-4 md:gap-y-12 [&>*:last-child]:col-span-2 [&>*:last-child]:lg:col-span-1 [&>*:last-child]:w-1/2 [&>*:last-child]:lg:w-full [&>*:last-child]:mx-auto">
-              {bottomRow.map((celeb, i) => (
-                <CelebCard key={celeb.name} celeb={celeb} i={i + 2} />
+            {/* Celebrity Grid: 2-2-2-1 on mobile, 3 then 4 on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-4 md:gap-x-6 lg:gap-x-10 gap-y-12 mb-4 md:mb-12">
+              {celebrities.map((celeb, i) => (
+                <div 
+                  key={celeb.name} 
+                  className={`
+                    ${i < 3 ? 'lg:col-span-4' : 'lg:col-span-3'}
+                    ${i === 6 ? 'col-span-2 w-1/2 mx-auto lg:w-full lg:mx-0' : 'col-span-1'}
+                  `}
+                >
+                  <CelebCard celeb={celeb} i={i} />
+                </div>
               ))}
             </div>
           </div>
@@ -199,7 +200,7 @@ export default function Talent({ marginClassName }: TalentProps) {
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="shrink-0 relative w-full md:w-[220px] lg:w-[280px] min-h-[350px] md:min-h-0 order-2 md:order-1 mt-12 md:mt-0"
+            className="shrink-0 relative w-full md:w-[180px] lg:w-[220px] min-h-[300px] md:min-h-0 order-2 md:order-1 mt-12 md:mt-0"
           >
             <Image
               src="/assets/MASCOT 1.png"
