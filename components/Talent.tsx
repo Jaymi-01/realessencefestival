@@ -151,13 +151,25 @@ export default function Talent({ marginClassName }: TalentProps) {
         backgroundBlendMode: "overlay",
       }}
     >
-      {/* Intersect Borders */}
-      <div className="absolute inset-y-0 -left-[60px] md:-left-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-left.svg" alt="" fill className="object-cover object-top" />
-      </div>
-      <div className="absolute inset-y-0 -right-[60px] md:-right-8 w-[80px] md:w-[69px] z-30 pointer-events-none overflow-hidden">
-        <Image src="/assets/Intersect-right.svg" alt="" fill className="object-cover object-top" />
-      </div>
+      {/* Intersect Borders - Pseudo Background */}
+      <div 
+        className="absolute top-0 bottom-0 left-0 md:-left-8 w-[35px] md:w-[69px] z-0 pointer-events-none"
+        style={{ 
+          backgroundImage: 'url("/assets/Intersect-left.svg")',
+          backgroundRepeat: 'repeat-y',
+          backgroundSize: '100% 600px',
+          backgroundPosition: 'center'
+        }}
+      />
+      <div 
+        className="absolute top-0 bottom-0 right-0 md:-right-8 w-[35px] md:w-[69px] z-0 pointer-events-none"
+        style={{ 
+          backgroundImage: 'url("/assets/Intersect-right.svg")',
+          backgroundRepeat: 'repeat-y',
+          backgroundSize: '100% 600px',
+          backgroundPosition: 'center'
+        }}
+      />
 
       {/* Main Container */}
       <div className={`max-w-[1536px] mx-auto w-full relative z-20 flex flex-col px-6 md:px-8 lg:px-12 ${marginClassName ?? ""}`}>
