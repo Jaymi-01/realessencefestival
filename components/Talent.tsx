@@ -18,12 +18,12 @@ export default function Talent({ marginClassName }: TalentProps) {
       desc: "Ayo Maff is a Nigerian Afrobeats artist who rose to fame with “Dealer” featuring Fireboy DML."
     },
     { 
-      name: "omoye cooks", 
+      name: "YOUR FOOD GIRL", 
       role: "Judge", 
-      image: "/assets/Omoye Cooks.png", 
+      image: "/assets/Yourfoodgirl.png", 
       bg: "/assets/Omoye-background.png",
       color: "#C10706",
-      desc: "Omoye Isabota (OmoyeCooks) is a Nigerian chef and food creator who will host the masterclass and serve as a competition judge."
+      desc: "Cynthia Salami is a digital creator and Nigerian food advocate, showcasing West African cuisine and bringing Nigeria’s bold flavors to a global audience."
     },
     { 
       name: "ify's kitchen", 
@@ -48,6 +48,14 @@ export default function Talent({ marginClassName }: TalentProps) {
       bg: "/assets/Chef Pobs-background.png",
       color: "#C10706",
       desc: "Chef Pobs is a Nigerian chef known for blending local flavors with modern culinary creativity."
+    },
+    { 
+      name: "emeneks", 
+      role: "Judge", 
+      image: "/assets/Emeneks.png", 
+      bg: "/assets/Chef Pobs-background.png",
+      color: "#C10706",
+      desc: "Emeka Nwagbaraocha is a Nigerian actor and scriptwriter best known for playing Frank in Netflix’s Far From Home."
     },
     { 
       name: "chike the creator", 
@@ -99,7 +107,7 @@ export default function Talent({ marginClassName }: TalentProps) {
             </motion.div>
 
             {/* Celebrities Grid - 2 columns on mobile, 3 on desktop */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-2 md:gap-x-4 gap-y-16 md:gap-y-12">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-2 md:gap-x-4 lg:gap-x-12 gap-y-16 md:gap-y-12">
               {celebrities.map((celeb, i) => (
                 <motion.div 
                   key={i} 
@@ -129,21 +137,38 @@ export default function Talent({ marginClassName }: TalentProps) {
                       <Image src="/assets/Mask group.png" alt="" fill className="w-full h-full" />
                     </div>
                     <div className="relative z-10 flex flex-col items-center justify-center text-center w-full">
-                      <div className="px-[12%] md:px-[15%] w-full mb-0.5 md:mb-1">
+                      <div className="px-[15%] md:px-[18%] w-full mb-0.5 md:mb-1">
                         <h3 
-                          className="text-[clamp(10px,1.6vw,20px)] uppercase leading-tight font-lilita"
+                          className="text-[clamp(10px,1.4vw,18px)] uppercase leading-[1] font-lilita"
                           style={{ color: celeb.color }}
                         >
                           {celeb.name}
                         </h3>
                       </div>
-                      <div className="px-[8%] md:px-[10%] w-full">
-                        <p className="text-[clamp(6px,0.8vw,11px)] text-black uppercase font-bold leading-none mb-0.5 md:mb-1">
+                      <div className="px-[10%] md:px-[12%] w-full">
+                        <p className="text-[clamp(6px,0.7vw,10px)] text-black uppercase font-bold leading-none mb-0.5 md:mb-1">
                           {celeb.role}
                         </p>
-                        <p className="text-[clamp(7px,1vw,12px)] text-black/80 leading-tight font-sans max-w-[95%] mx-auto">
+                        <p className="text-[clamp(7px,0.85vw,11px)] text-black/80 leading-tight font-sans max-w-[90%] mx-auto">
                           {celeb.desc}
                         </p>
+                      </div>
+                      <div>
+                        
+                      </div>
+                    </div>
+
+                    {/* Decorative Spices - Desktop Only */}
+                    <div className="hidden lg:block absolute -bottom-8 -left-8 z-30 pointer-events-none w-32 h-32">
+                      <div className="relative w-full h-full">
+                        {/* Rich Spices - Bottom/Right */}
+                        <div className="absolute bottom-4 left-12 w-16 h-16">
+                          <Image src="/assets/Rich Spices 1.png" alt="" fill className="object-contain" />
+                        </div>
+                        {/* Tasty Chicken - Top/Left */}
+                        <div className="absolute bottom-10 left-2 w-16 h-16 z-10">
+                          <Image src="/assets/Tasty Chicken 1.png" alt="" fill className="object-contain" />
+                        </div>
                       </div>
                     </div>
                   </div>
