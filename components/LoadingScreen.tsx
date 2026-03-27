@@ -25,7 +25,7 @@ export default function LoadingScreen({ isVisible }: { isVisible: boolean }) {
               src="/assets/SPLASH 1.png" 
               alt="Real Essence Festival" 
               fill
-              className="object-cover"
+              className="object-fill"
               priority
             />
           </motion.div>
