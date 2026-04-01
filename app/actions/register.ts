@@ -4,8 +4,8 @@ import nodemailer from "nodemailer";
 
 export async function registerUser(formData: { 
   firstName: string; 
-  lastName: string; 
-  gender: string; 
+  // lastName: string; // Commented out
+  // gender: string;   // Commented out
   phone: string; 
   email: string; 
 }) {
@@ -66,7 +66,11 @@ export async function registerUser(formData: {
       const sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbyWpzgac7658loquzysSUrbmF8I9aTZiw3abl5ADhwK2w0ldSyCkhCll44y9QiuTn0KMw/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          lastName: "", // Field hidden in UI, sending empty to preserve sheet columns
+          gender: ""    // Field hidden in UI, sending empty to preserve sheet columns
+        }),
         redirect: "follow",
       });
 
