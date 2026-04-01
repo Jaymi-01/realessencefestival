@@ -16,8 +16,8 @@ import { registerUser } from "@/app/actions/register";
 
 const formSchema = z.object({
   firstName: z.string().min(1, "First Name is required"),
-  lastName: z.string().min(1, "Last Name is required"),
-  gender: z.string().min(1, "Gender is required"),
+  // lastName: z.string().min(1, "Last Name is required"),
+  // gender: z.string().min(1, "Gender is required"),
   phone: z.string().min(1, "Phone is required"),
   email: z.string().email("Invalid email address"),
 });
@@ -157,8 +157,8 @@ export default function Hero({ marginClassName }: HeroProps) {
               <div className="bg-white rounded-t-[2.5rem] p-6 sm:p-7 space-y-[1.5vh] w-full flex-grow">
                 {[
                   { label: "First Name", id: "firstName", type: "text", auto: "given-name" },
-                  { label: "Last Name", id: "lastName", type: "text", auto: "family-name" },
-                  { label: "Gender", id: "gender", type: "text", auto: "sex" },
+                  // { label: "Last Name", id: "lastName", type: "text", auto: "family-name" },
+                  // { label: "Gender", id: "gender", type: "text", auto: "sex" },
                   { label: "Phone", id: "phone", type: "tel", auto: "tel" },
                   { label: "Email", id: "email", type: "email", auto: "email" },
                 ].map((field) => (
